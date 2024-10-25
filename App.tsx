@@ -2,12 +2,15 @@ import { View, Text, SafeAreaView } from 'react-native';
 import React from 'react';
 import CustomButton, {
   ButtonType,
-} from './src/shared/CustomButton/CustomButton';
-import Input from './src/shared/Input/Input';
+} from './src/shared/ui/CustomButton/CustomButton';
+import Input from './src/shared/ui/Input/Input';
 
 const App = () => {
   return (
     <SafeAreaView>
+      <Text style={{ fontSize: 36, fontFamily: 'Gilroy-Heavy' }}>
+        Hello world
+      </Text>
       {/* <CustomButton
         width={'50%'}
         height={60}

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { View, Text, TextInput, DimensionValue } from 'react-native';
 import { styles } from './styles';
-import { colors } from '../../app/styles/colors';
+import { colors } from '../../../app/styles/colors';
 
 type InputProps = {
   label?: string;

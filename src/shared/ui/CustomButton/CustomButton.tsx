@@ -9,7 +9,7 @@ import {
 import React, { FC, useMemo } from 'react';
 import { styles } from './styles';
 import LinearGradient from 'react-native-linear-gradient';
-import { colors } from '../../app/styles/colors';
+import { colors } from '../../../app/styles/colors';
 
 export enum ButtonType {
   PRIMARY = 'primary',
