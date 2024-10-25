@@ -7,9 +7,11 @@ type InputProps = {
   label?: string;
   value: string;
   onChange: (value: string) => void;
+  onBlur: () => void;
   placeholder?: string;
   width?: DimensionValue;
   height?: DimensionValue;
+  errorText?: string | null;
 };
 
 const Input: FC<InputProps> = props => {
@@ -20,18 +22,26 @@ const Input: FC<InputProps> = props => {
     width = '100%',
     height = 42,
     placeholder = '',
+    onBlur,
+    errorText,
   } = props;
 
   return (
     <View style={styles.container}>
       {label && <Text style={styles.label}>{label}</Text>}
       <TextInput
-        placeholder=""
+        placeholder={placeholder}
         placeholderTextColor={colors.textSecondary}
         onChangeText={text => onChange(text)}
+        onBlur={onBlur}
         value={value}
-        style={[styles.input, { width, height }]}
+        style={[
+          styles.input,
+          errorText ? styles.errorInput : null,
+          { width, height },
+        ]}
       />
+      {errorText && <Text style={styles.errorText}>{errorText}</Text>}
     </View>
   );
 };

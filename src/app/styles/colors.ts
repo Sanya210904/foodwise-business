@@ -8,6 +8,7 @@ export const colors = {
 
   brandPrimaryFrom: '#6696ad',
   brandPrimaryTo: '#bdd4d7',
+  brandDanger: '#eb4b3f',
 
   buttonPrimaryFrom: '#6696ad',
   buttonPrimaryTo: '#bdd4d7',
@@ -15,6 +16,8 @@ export const colors = {
   buttonGrey: '#f1f1f1',
   buttonWhite: '#fff',
   buttonDisabled: '#d0d0d0',
+
+  cardPrimary: '#fff',
 
   inputPrimary: '#f1f1f1',
 };

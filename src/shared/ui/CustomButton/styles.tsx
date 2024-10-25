@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { colors } from '../../../app/styles/colors';
+import { fonts } from '../../../app/styles/fonts';
 
 export const styles = StyleSheet.create({
   button: {
@@ -38,8 +39,10 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     lineHeight: 22,
     color: colors.textInverted,
+    fontFamily: fonts[600],
   },
   greyButtonText: {
     color: colors.textPrimary,
+    fontFamily: fonts[600],
   },
 });

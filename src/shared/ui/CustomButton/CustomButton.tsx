@@ -25,7 +25,7 @@ type CustomButtonProps = {
   onPress: () => void;
   type?: ButtonType;
   isDisabled?: boolean;
-  buttonStyles?: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle>;
   width?: DimensionValue;
   height?: DimensionValue;
 };
@@ -37,7 +37,7 @@ const CustomButton: FC<CustomButtonProps> = props => {
     onPress,
     type = ButtonType.PRIMARY,
     isDisabled = false,
-    buttonStyles,
+    style,
     width = '100%',
     height = 60,
   } = props;
@@ -58,7 +58,7 @@ const CustomButton: FC<CustomButtonProps> = props => {
 
   const buttonContent = (
     <TouchableOpacity
-      style={[getButtonStyles, styles.button, { width, height }, buttonStyles]}
+      style={[getButtonStyles, styles.button, { width, height }, style]}
       onPress={onPress}
       activeOpacity={0.8}
       disabled={isDisabled}>
@@ -68,8 +68,7 @@ const CustomButton: FC<CustomButtonProps> = props => {
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
           colors={[colors.buttonPrimaryFrom, colors.buttonPrimaryTo]}>
-          {' '}
-          :<Text style={getButtonTextStyles}>{title}</Text>
+          <Text style={getButtonTextStyles}>{title}</Text>
         </LinearGradient>
       ) : (
         <View style={styles.container}>
