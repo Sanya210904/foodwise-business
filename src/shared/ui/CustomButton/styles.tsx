@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.buttonSecondary,
   },
   grey: {
-    backgroundColor: colors.buttonGrey,
+    backgroundColor: colors.buttonSecondary,
   },
   white: {
     backgroundColor: colors.buttonWhite,
@@ -23,6 +23,7 @@ export const styles = StyleSheet.create({
     backgroundColor: 'none',
   },
   disabled: {
+    // backgroundColor: 'red',
     backgroundColor: colors.buttonDisabled,
   },
 

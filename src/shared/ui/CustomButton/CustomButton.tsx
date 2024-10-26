@@ -5,6 +5,7 @@ import {
   StyleProp,
   ViewStyle,
   DimensionValue,
+  ActivityIndicator,
 } from 'react-native';
 import React, { FC, useMemo } from 'react';
 import { styles } from './styles';
@@ -25,6 +26,7 @@ type CustomButtonProps = {
   onPress: () => void;
   type?: ButtonType;
   isDisabled?: boolean;
+  isLoading?: boolean;
   style?: StyleProp<ViewStyle>;
   width?: DimensionValue;
   height?: DimensionValue;
@@ -37,13 +39,14 @@ const CustomButton: FC<CustomButtonProps> = props => {
     onPress,
     type = ButtonType.PRIMARY,
     isDisabled = false,
+    isLoading = false,
     style,
     width = '100%',
     height = 60,
   } = props;
 
   const getButtonStyles = useMemo(() => {
-    if (isDisabled) return styles.disabled;
+    if (isLoading || isDisabled) return styles.disabled;
     if (type === ButtonType.PRIMARY) return styles.primary;
     if (type === ButtonType.SECONDARY) return styles.secondary;
     if (type === ButtonType.GREY) return styles.grey;
@@ -61,33 +64,30 @@ const CustomButton: FC<CustomButtonProps> = props => {
       style={[getButtonStyles, styles.button, { width, height }, style]}
       onPress={onPress}
       activeOpacity={0.8}
-      disabled={isDisabled}>
-      {type === ButtonType.PRIMARY ? (
+      disabled={isDisabled || isLoading}>
+      {type === ButtonType.PRIMARY && !isDisabled && !isLoading ? (
         <LinearGradient
           style={[styles.primary, styles.container]}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
           colors={[colors.buttonPrimaryFrom, colors.buttonPrimaryTo]}>
-          <Text style={getButtonTextStyles}>{title}</Text>
+          {isLoading ? (
+            <ActivityIndicator color={'#fff'} />
+          ) : (
+            <Text style={getButtonTextStyles}>{title}</Text>
+          )}
         </LinearGradient>
       ) : (
         <View style={styles.container}>
-          <Text style={getButtonTextStyles}>{title}</Text>
+          {isLoading ? (
+            <ActivityIndicator color={'#fff'} />
+          ) : (
+            <Text style={getButtonTextStyles}>{title}</Text>
+          )}
         </View>
       )}
     </TouchableOpacity>
   );
-
-  //   if (type === ButtonType.PRIMARY) {
-  //     return (
-  //       <LinearGradient
-  //         start={{ x: 0, y: 0 }}
-  //         end={{ x: 1, y: 0 }}
-  //         colors={[colors.buttonPrimaryFrom, colors.buttonPrimaryTo]}>
-  //         {buttonContent}
-  //       </LinearGradient>
-  //     );
-  //   }
 
   return buttonContent;
 };
