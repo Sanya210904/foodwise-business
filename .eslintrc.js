@@ -8,6 +8,7 @@ module.exports = {
     'plugin:import/recommended',
     'prettier',
   ],
+  plugins: ['prettier'],
   rules: {
     'import/no-unresolved': 'off',
     'no-unused-vars': 'off',
