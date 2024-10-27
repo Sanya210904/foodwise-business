@@ -11,6 +11,16 @@ module.exports = {
         safe: false,
         allowUndefined: true,
       },
+
+      [
+        'module-resolver',
+        {
+          root: ['.'],
+          alias: {
+            '@src': './src',
+          },
+        },
+      ],
     ],
   ],
 };
