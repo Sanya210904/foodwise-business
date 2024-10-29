@@ -20,4 +20,7 @@ export const colors = {
   cardPrimary: '#fff',
 
   inputPrimary: '#f1f1f1',
+
+  navbarColor: '#fff',
+  statusBarColor: '#fff',
 };

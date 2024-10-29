@@ -1,51 +1,8 @@
-import { View, Text, SafeAreaView } from 'react-native';
 import React from 'react';
-import CustomButton, {
-  ButtonType,
-} from './src/shared/ui/CustomButton/CustomButton';
-import Input from './src/shared/ui/Input/Input';
+import RouteStack from '@src/app/providers/router/ui/RouteStack/RouteStack';
 
 const App = () => {
-  return (
-    <SafeAreaView>
-      <Text style={{ fontSize: 36, fontFamily: 'Gilroy-Heavy' }}>
-        Hello world
-      </Text>
-      {/* <CustomButton
-        width={'50%'}
-        height={60}
-        title="Press me"
-        type={ButtonType.PRIMARY}
-        onPress={() => undefined}
-      />
-
-      <CustomButton
-        width={'50%'}
-        height={60}
-        title="Press me"
-        type={ButtonType.SECONDARY}
-        onPress={() => undefined}
-      />
-
-      <CustomButton
-        width={'50%'}
-        height={60}
-        title="Press me"
-        type={ButtonType.GREY}
-        onPress={() => undefined}
-      />
-
-      <CustomButton
-        width={'50%'}
-        height={60}
-        title="Press me"
-        type={ButtonType.CLEAR}
-        onPress={() => undefined}
-      /> */}
-
-      <Input label="Email" value="Hello" onChange={() => undefined} />
-    </SafeAreaView>
-  );
+  return <RouteStack />;
 };
 
 export default App;

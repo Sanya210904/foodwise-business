@@ -8,6 +8,7 @@ type InputProps = {
   value: string;
   onChange: (value: string) => void;
   onBlur: () => void;
+  secureTextEntry?: boolean;
   placeholder?: string;
   width?: DimensionValue;
   height?: DimensionValue;
@@ -23,6 +24,7 @@ const Input: FC<InputProps> = props => {
     height = 42,
     placeholder = '',
     onBlur,
+    secureTextEntry = false,
     errorText,
   } = props;
 
@@ -35,6 +37,7 @@ const Input: FC<InputProps> = props => {
         onChangeText={text => onChange(text)}
         onBlur={onBlur}
         value={value}
+        secureTextEntry={secureTextEntry}
         style={[
           styles.input,
           errorText ? styles.errorInput : null,
