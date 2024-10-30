@@ -9,6 +9,7 @@ const initialState: AuthSchema = {
   isAuth: false,
   shopId: null,
   isLoading: false,
+  isAppLoading: false,
   error: null,
 };
 
@@ -45,12 +46,17 @@ const authSlice = createSlice({
       state.error = action.payload?.error.message || null;
     });
 
+    builder.addCase(fetchAuthStatus.pending, state => {
+      state.isAppLoading = true;
+    });
     builder.addCase(fetchAuthStatus.fulfilled, (state, action) => {
+      state.isAppLoading = false;
       state.isAuth = true;
       EncryptedStorage.setItem('token', action.payload.data.accessToken);
       state.shopId = action.payload.data.shop._id;
     });
     builder.addCase(fetchAuthStatus.rejected, (state, action) => {
+      state.isAppLoading = false;
       state.isAuth = false;
     });
   },

@@ -1,4 +1,7 @@
 export enum RouteName {
-  Auth = 'auth',
-  Menu = 'menu',
+  AUTH = 'auth',
+  MENU = 'menu',
+  ORDER = 'order',
+  SCANNER = 'scanner',
+  PROFILE = 'profile',
 }

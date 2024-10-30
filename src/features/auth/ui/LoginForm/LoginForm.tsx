@@ -8,7 +8,6 @@ import { emailPattern } from '../../model/constants/emailPattern';
 import { useAppDispatch } from '@src/shared/hooks/useAppDispatch';
 import { fetchLogin } from '../../api/services/fetchLogin';
 import { useAppSelector } from '@src/shared/hooks/useAppSelector';
-import { useNavigation } from '@react-navigation/native';
 import { useAppNavigation } from '@src/shared/hooks/useAppNavigation';
 import { RouteName } from '@src/app/providers/router/model/constants/RouteName';
 
@@ -38,7 +37,7 @@ const LoginForm: FC<LoginFormProps> = props => {
     try {
       await dispatch(fetchLogin(data)).unwrap();
 
-      navigation.navigate(RouteName.Menu);
+      navigation.navigate(RouteName.MENU);
     } catch (e) {
       console.log('Error');
     }

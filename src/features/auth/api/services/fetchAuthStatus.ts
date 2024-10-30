@@ -10,6 +10,7 @@ export const fetchAuthStatus = createAsyncThunk(
         withCredentials: true,
       });
 
+      console.log(response.data);
       return response.data;
     } catch (error: any) {
       return rejectWithValue(error.response.data);
