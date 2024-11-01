@@ -6,6 +6,7 @@ import {
   ViewStyle,
   DimensionValue,
   ActivityIndicator,
+  TextStyle,
 } from 'react-native';
 import React, { FC, useMemo } from 'react';
 import { styles } from './styles';
@@ -29,6 +30,7 @@ type CustomButtonProps = {
   isDisabled?: boolean;
   isLoading?: boolean;
   style?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>;
   width?: DimensionValue;
   height?: DimensionValue;
 };
@@ -42,6 +44,7 @@ const CustomButton: FC<CustomButtonProps> = props => {
     isDisabled = false,
     isLoading = false,
     style,
+    textStyle,
     width = '100%',
     height = 60,
   } = props;
@@ -78,7 +81,7 @@ const CustomButton: FC<CustomButtonProps> = props => {
           {isLoading ? (
             <ActivityIndicator color={'#fff'} />
           ) : (
-            <Text style={getButtonTextStyles}>{title}</Text>
+            <Text style={[getButtonTextStyles, textStyle]}>{title}</Text>
           )}
         </LinearGradient>
       ) : (
@@ -86,7 +89,7 @@ const CustomButton: FC<CustomButtonProps> = props => {
           {isLoading ? (
             <ActivityIndicator color={'#fff'} />
           ) : (
-            <Text style={getButtonTextStyles}>{title}</Text>
+            <Text style={[getButtonTextStyles, textStyle]}>{title}</Text>
           )}
         </View>
       )}
