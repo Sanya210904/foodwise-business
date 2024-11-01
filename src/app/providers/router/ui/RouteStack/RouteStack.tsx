@@ -9,7 +9,6 @@ const RootStack = createNativeStackNavigator();
 
 const RouteStack = () => {
   const isAuth = useAppSelector(state => state.auth.isAuth);
-  // const isAuth = true;
 
   return (
     <RootStack.Navigator

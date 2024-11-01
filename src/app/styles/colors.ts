@@ -5,10 +5,12 @@ export const colors = {
   textPrimary: '#000',
   textSecondary: '#4B4B4B',
   textInverted: '#fff',
+  textLink: '#5193C2',
 
   brandPrimaryFrom: '#6696ad',
   brandPrimaryTo: '#bdd4d7',
   brandDanger: '#eb4b3f',
+  brandSuccess: '#5dbc83',
 
   buttonPrimaryFrom: '#6696ad',
   buttonPrimaryTo: '#bdd4d7',
@@ -16,6 +18,8 @@ export const colors = {
   buttonGrey: '#f1f1f1',
   buttonWhite: '#fff',
   buttonDisabled: '#d0d0d0',
+
+  borderPrimary: '#ebebeb',
 
   cardPrimary: '#fff',
 

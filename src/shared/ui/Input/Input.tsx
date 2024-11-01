@@ -1,5 +1,12 @@
 import { FC } from 'react';
-import { View, Text, TextInput, DimensionValue } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  DimensionValue,
+  StyleProp,
+  TextStyle,
+} from 'react-native';
 import { styles } from './styles';
 import { colors } from '../../../app/styles/colors';
 
@@ -7,12 +14,13 @@ type InputProps = {
   label?: string;
   value: string;
   onChange: (value: string) => void;
-  onBlur: () => void;
+  onBlur?: () => void;
   secureTextEntry?: boolean;
   placeholder?: string;
   width?: DimensionValue;
   height?: DimensionValue;
   errorText?: string | null;
+  style?: StyleProp<TextStyle>;
 };
 
 const Input: FC<InputProps> = props => {
@@ -26,6 +34,7 @@ const Input: FC<InputProps> = props => {
     onBlur,
     secureTextEntry = false,
     errorText,
+    style,
   } = props;
 
   return (
@@ -42,6 +51,7 @@ const Input: FC<InputProps> = props => {
           styles.input,
           errorText ? styles.errorInput : null,
           { width, height },
+          style,
         ]}
       />
       {errorText && <Text style={styles.errorText}>{errorText}</Text>}

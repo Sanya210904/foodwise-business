@@ -1,20 +1,23 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { bottomTabsRoutes } from '../../model/constants/routeList';
-import { RouteName } from '../../model/constants/RouteName';
 import { styles } from './styles';
 import BottomBarLink from '../BottomTabLink/BottomTabLink';
+import { useAtom } from 'jotai';
+import { isEditAtom } from '@src/app/providers/atoms/editAtom';
 
 const BottomTab = createBottomTabNavigator();
 
 const BottomTabs = () => {
+  const [isEdit] = useAtom(isEditAtom);
+
   return (
     <BottomTab.Navigator
       initialRouteName="Menu"
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarShowLabel: false,
-        tabBarStyle: styles.navigation,
+        tabBarStyle: isEdit ? styles.emptyNavigation : styles.navigation,
 
         tabBarIcon: ({}) => {
           const iconWidth = 40;

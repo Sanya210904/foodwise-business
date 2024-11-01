@@ -12,7 +12,7 @@ import { styles } from './styles';
 type CardProps = {
   children: ReactNode;
   width: DimensionValue;
-  height: DimensionValue;
+  height?: DimensionValue;
   isPressable?: boolean;
   onPress?: () => void;
   cardStyles?: StyleProp<ViewStyle>;
@@ -40,7 +40,7 @@ const Card: FC<CardProps> = props => {
       <Shadow
         style={{
           width,
-          height,
+          // height,
         }}
         {...cardShadow}>
         <TouchableOpacity

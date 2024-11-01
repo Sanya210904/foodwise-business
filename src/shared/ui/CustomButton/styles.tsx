@@ -4,7 +4,7 @@ import { fonts } from '../../../app/styles/fonts';
 
 export const styles = StyleSheet.create({
   button: {
-    borderRadius: 21,
+    // borderRadius: 21,
   },
 
   primary: {
@@ -12,19 +12,25 @@ export const styles = StyleSheet.create({
   },
   secondary: {
     backgroundColor: colors.buttonSecondary,
+    borderRadius: 21,
   },
   grey: {
     backgroundColor: colors.buttonSecondary,
+    borderRadius: 21,
   },
   white: {
     backgroundColor: colors.buttonWhite,
+    borderRadius: 7,
   },
   clear: {
     backgroundColor: 'none',
   },
+  link: {
+    backgroundColor: 'none',
+  },
   disabled: {
-    // backgroundColor: 'red',
     backgroundColor: colors.buttonDisabled,
+    borderRadius: 21,
   },
 
   container: {
@@ -43,7 +49,15 @@ export const styles = StyleSheet.create({
     fontFamily: fonts[600],
   },
   greyButtonText: {
+    fontSize: 16,
+    lineHeight: 22,
     color: colors.textPrimary,
+    fontFamily: fonts[600],
+  },
+  linkButtonText: {
+    fontSize: 20,
+    lineHeight: 22,
+    color: colors.textLink,
     fontFamily: fonts[600],
   },
 });

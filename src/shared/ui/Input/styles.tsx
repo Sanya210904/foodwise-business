@@ -17,6 +17,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 12,
     color: colors.textSecondary,
     fontFamily: fonts[500],
+    fontSize: 20,
     borderWidth: 1,
     borderColor: colors.inputPrimary,
   },

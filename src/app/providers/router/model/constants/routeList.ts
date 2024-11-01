@@ -11,6 +11,7 @@ import MenuIcon from '@src/shared/assets/icons/menu-icon.svg';
 import OrdersIcon from '@src/shared/assets/icons/orders-icon.svg';
 import ScannerIcon from '@src/shared/assets/icons/scanner-icon.svg';
 import ProfileIcon from '@src/shared/assets/icons/profile-icon.svg';
+import CreateProductPage from '@src/pages/CreateProductPage/CreateProductPage';
 
 export const publicRoutes: Route[] = [
   {
@@ -19,7 +20,12 @@ export const publicRoutes: Route[] = [
   },
 ];
 
-export const privateRoutes: Route[] = [];
+export const privateRoutes: Route[] = [
+  {
+    name: RouteName.CREATE_PRODUCT,
+    component: CreateProductPage,
+  },
+];
 
 export const bottomTabsRoutes: BottomTabRoute[] = [
   {

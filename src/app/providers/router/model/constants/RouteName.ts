@@ -4,4 +4,5 @@ export enum RouteName {
   ORDER = 'order',
   SCANNER = 'scanner',
   PROFILE = 'profile',
+  CREATE_PRODUCT = 'createProduct',
 }
