@@ -1,9 +1,11 @@
+import { Shop, ShopParams } from '@src/entities/shop';
+
 export type LoginResponse = {
   data: {
     accessToken: string;
     refreshToken: string;
-    // shop: IShop;
-    // shop_attributes: IShopAttr;
+    shop: Shop;
+    shop_attributes: ShopParams;
   };
 };
 

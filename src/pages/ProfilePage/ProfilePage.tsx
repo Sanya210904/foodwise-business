@@ -1,7 +1,7 @@
 import CustomButton, {
   ButtonType,
 } from '@src/shared/ui/CustomButton/CustomButton';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, SafeAreaView, ActivityIndicator } from 'react-native';
 import { styles } from './styles';
 import { RevenueStat } from '@src/entities/stat';
@@ -10,14 +10,21 @@ import { useDispatch } from 'react-redux';
 import { fetchShop } from '@src/entities/shop/api/services/fetchShop';
 import { useAppDispatch } from '@src/shared/hooks/useAppDispatch';
 import { useAppSelector } from '@src/shared/hooks/useAppSelector';
+import BottomSheetDialog from '@src/shared/ui/Modal/BottomSheetDialog/BottomSheetDialog';
+import { fetchLogout } from '@src/features/auth/api/services/fetchLogout';
 
 const ProfilePage = () => {
   const dispatch = useAppDispatch();
   const isLoading = useAppSelector(state => state.shop.isLoading);
+  const [isLogoutDialogOpen, setLogoutDialogOpen] = useState<boolean>(false);
 
   useEffect(() => {
     dispatch(fetchShop());
   }, []);
+
+  const handleLogout = () => {
+    dispatch(fetchLogout());
+  };
 
   if (isLoading) {
     return (
@@ -29,6 +36,14 @@ const ProfilePage = () => {
 
   return (
     <SafeAreaView style={styles.screen}>
+      <BottomSheetDialog
+        isOpen={isLogoutDialogOpen}
+        title="Sign out from Smart Bistro?"
+        onClose={() => setLogoutDialogOpen(false)}
+        onSubmitButtonPress={handleLogout}
+        submitButtonTitle="Yes, sign out"
+        cancelButtonTitle="Cancel"
+      />
       <View style={styles.container}>
         <View style={styles.header}>
           <Text style={styles.title}>Profile</Text>
@@ -36,7 +51,7 @@ const ProfilePage = () => {
             width={91}
             height={43}
             title="Sign out"
-            onPress={() => undefined}
+            onPress={() => setLogoutDialogOpen(true)}
             type={ButtonType.LINK}
           />
         </View>
