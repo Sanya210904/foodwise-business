@@ -5,28 +5,21 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   screen: {
-    backgroundColor: colors.surfacePrimary,
     flex: 1,
+    backgroundColor: colors.surfacePrimary,
   },
   container: {
-    paddingTop: offsets.containerOffsetTop,
-    paddingHorizontal: offsets.containerOffsetHorizontal,
+    marginTop: offsets.containerOffsetTop,
     paddingBottom: offsets.containerOffsetBottom,
-  },
-  header: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    paddingHorizontal: offsets.containerOffsetHorizontal,
+    flex: 1,
   },
   title: {
     fontSize: 28,
     fontFamily: fonts[700],
+    textAlign: 'center',
   },
-  input: {
-    marginTop: 16,
-  },
-  listWrapper: {
-    flex: 1,
+  form: {
+    marginTop: 36,
   },
 });

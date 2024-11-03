@@ -7,4 +7,5 @@ export type TypeRootStackParamsList = {
   [RouteName.SCANNER]: undefined;
   [RouteName.PROFILE]: undefined;
   [RouteName.CREATE_PRODUCT]: undefined;
+  [RouteName.EDIT_SHOP]: undefined;
 };

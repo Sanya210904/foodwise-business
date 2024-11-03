@@ -5,4 +5,5 @@ export enum RouteName {
   SCANNER = 'scanner',
   PROFILE = 'profile',
   CREATE_PRODUCT = 'createProduct',
+  EDIT_SHOP = 'editShop',
 }

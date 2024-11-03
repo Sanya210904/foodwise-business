@@ -12,7 +12,11 @@ const initialState: ShopSchema = {
 const shopSlice = createSlice({
   name: 'shop',
   initialState,
-  reducers: {},
+  reducers: {
+    clearShop: state => {
+      state.shop = {} as Shop;
+    },
+  },
   extraReducers: builder => {
     builder.addCase(fetchShop.pending, (state, action) => {
       state.isLoading = true;
@@ -30,3 +34,4 @@ const shopSlice = createSlice({
 });
 
 export default shopSlice.reducer;
+export const { clearShop } = shopSlice.actions;

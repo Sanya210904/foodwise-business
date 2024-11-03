@@ -1,11 +1,11 @@
 import ShopCard from './ui/ShopCard/ShopCard';
 
-import type { Shop, ShopParams } from './model/types/Shop';
+import type { Shop } from './model/types/Shop';
 
 import shopSlice from './api/slices/shopSlice';
-import { setShop, clearShop } from './api/slices/shopSlice';
+import { clearShop } from './api/slices/shopSlice';
 
 export { ShopCard };
-export { Shop, ShopParams };
+export { Shop };
 export { shopSlice };
-export { setShop, clearShop };
+export { clearShop };

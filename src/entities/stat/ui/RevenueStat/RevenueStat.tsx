@@ -16,7 +16,7 @@ const RevenueStat: FC<RevenueStatProps> = ({ style }) => {
       <View style={styles.container}>
         <View style={styles.statBlock}>
           <Text style={[styles.statTitle, styles.statTitleGreen]}>
-            ${stats.overall?.$numberDecimal ?? 0}
+            ${stats?.overall?.$numberDecimal ?? 0}
           </Text>
           <Text style={styles.subtitle}>Total income</Text>
         </View>
@@ -25,7 +25,7 @@ const RevenueStat: FC<RevenueStatProps> = ({ style }) => {
 
         <View style={styles.statBlock}>
           <Text style={styles.statTitle}>
-            ${stats.last_month?.$numberDecimal ?? 0}
+            ${stats?.last_month?.$numberDecimal ?? 0}
           </Text>
           <Text style={styles.subtitle}>This month</Text>
         </View>
