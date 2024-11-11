@@ -18,6 +18,7 @@ type ImagePickerProps = {
   width: DimensionValue;
   height: DimensionValue;
   errorText?: string;
+  variant?: 'banner' | 'logo';
 };
 
 const ImagePicker: FC<ImagePickerProps> = props => {
@@ -29,6 +30,7 @@ const ImagePicker: FC<ImagePickerProps> = props => {
     width,
     height,
     errorText,
+    variant = 'banner',
   } = props;
 
   const handleImagePick = async () => {
@@ -41,36 +43,73 @@ const ImagePicker: FC<ImagePickerProps> = props => {
     });
   };
 
+  if (variant === 'banner') {
+    return (
+      <View>
+        {label && <Text style={styles.label}>{label}</Text>}
+        <View
+          style={[
+            styles.imagePicker,
+            errorText && styles.errorImagePicker,
+            { width, height },
+          ]}>
+          {image ? (
+            <>
+              <Image style={styles.image} source={{ uri: image }} />
+              <CustomButton
+                style={styles.chooseAnotherImageButton}
+                onPress={handleImagePick}
+                title="Choose other"
+                type={ButtonType.WHITE}
+                width={126}
+                height={34}
+              />
+            </>
+          ) : (
+            <TouchableOpacity
+              style={styles.imagePickerButton}
+              onPress={handleImagePick}>
+              {placeholder && (
+                <Text style={styles.placeholder}>{placeholder}</Text>
+              )}
+            </TouchableOpacity>
+          )}
+        </View>
+        {errorText && <Text style={styles.errorText}>{errorText}</Text>}
+      </View>
+    );
+  }
+
   return (
     <View>
       {label && <Text style={styles.label}>{label}</Text>}
-      <View
-        style={[
-          styles.imagePicker,
-          errorText && styles.errorImagePicker,
-          { width, height },
-        ]}>
+      <View style={styles.row}>
         {image ? (
-          <>
-            <Image style={styles.image} source={{ uri: image }} />
-            <CustomButton
-              style={styles.chooseAnotherImageButton}
-              onPress={handleImagePick}
-              title="Choose other"
-              type={ButtonType.WHITE}
-              width={126}
-              height={34}
-            />
-          </>
+          <Image
+            style={[
+              styles.logoImage,
+              { width, height },
+              errorText && styles.errorImagePicker,
+            ]}
+            source={{ uri: image }}
+          />
         ) : (
-          <TouchableOpacity
-            style={styles.imagePickerButton}
-            onPress={handleImagePick}>
-            {placeholder && (
-              <Text style={styles.placeholder}>{placeholder}</Text>
-            )}
-          </TouchableOpacity>
+          <View
+            style={[
+              styles.logoView,
+              { width, height },
+              errorText && styles.errorImagePicker,
+            ]}
+          />
         )}
+
+        <CustomButton
+          width={126}
+          height={34}
+          type={ButtonType.GREY}
+          title="Choose other"
+          onPress={handleImagePick}
+        />
       </View>
       {errorText && <Text style={styles.errorText}>{errorText}</Text>}
     </View>

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { View } from 'react-native';
+import { StyleProp, View, ViewStyle } from 'react-native';
 import CustomButton, { ButtonType } from '../CustomButton/CustomButton';
 import { styles } from './styles';
 
@@ -8,6 +8,7 @@ type BottomControlsProps = {
   additionalButtonTitle: string;
   onSubmitButtonPress: () => void;
   onAdditionalButtonPress: () => void;
+  style?: StyleProp<ViewStyle>;
 };
 
 const BottomControls: FC<BottomControlsProps> = props => {
@@ -16,10 +17,11 @@ const BottomControls: FC<BottomControlsProps> = props => {
     additionalButtonTitle,
     onAdditionalButtonPress,
     onSubmitButtonPress,
+    style,
   } = props;
 
   return (
-    <View style={styles.block}>
+    <View style={[styles.block, style]}>
       <CustomButton
         style={styles.button}
         onPress={onAdditionalButtonPress}

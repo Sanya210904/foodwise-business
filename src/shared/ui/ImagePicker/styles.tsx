@@ -45,4 +45,17 @@ export const styles = StyleSheet.create({
     borderColor: colors.brandDanger,
     borderWidth: 1,
   },
+
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  logoImage: {
+    borderRadius: 14,
+  },
+  logoView: {
+    borderRadius: 14,
+    backgroundColor: colors.surfaceSecondary,
+  },
 });
