@@ -5,12 +5,14 @@ import {
   CreateProductFields,
   CreateProductResponse,
 } from '../../model/types/CreateProduct';
+import { addProduct } from '@src/entities/product';
+import { AxiosResponse } from 'axios';
 
 export const fetchCreateProduct = createAsyncThunk<
   CreateProductResponse,
   CreateProductFields,
   { rejectValue: ServerError }
->('product/create', async (product, { rejectWithValue }) => {
+>('product/create', async (product, { rejectWithValue, dispatch }) => {
   const formData = new FormData();
 
   formData.append('title', product.title);
@@ -24,10 +26,13 @@ export const fetchCreateProduct = createAsyncThunk<
   console.log(formData);
 
   try {
-    const response = await baseApi.postForm('products', formData, {
-      headers: { 'Content-Type': 'multipart/form-data' },
-    });
-    console.log(response);
+    const response: AxiosResponse<CreateProductResponse> =
+      await baseApi.postForm('products', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+
+    dispatch(addProduct(response.data.data));
+
     return response.data;
   } catch (e: any) {
     return rejectWithValue(e.response.data);

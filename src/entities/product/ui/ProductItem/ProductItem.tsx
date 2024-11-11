@@ -40,7 +40,10 @@ const ProductItem: FC<ProductItemProps> = props => {
           </TouchableHighlight>
         )} */}
         <Image
-          source={require('../../../../shared/assets/images/noimage.png')}
+          // source={require('../../../../shared/assets/images/noimage.png')}
+          source={{
+            uri: `https://foodwiseapp.onrender.com/api/v1/uploads/${imageUrl}`,
+          }}
           style={styles.image}
         />
         {/* <Image

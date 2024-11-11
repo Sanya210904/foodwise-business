@@ -11,6 +11,7 @@ import { isEditAtom } from '@src/app/providers/atoms/editAtom';
 import BottomControls from '@src/shared/ui/BottomControls/BottomControls';
 import { useAppNavigation } from '@src/shared/hooks/useAppNavigation';
 import { RouteName } from '@src/app/providers/router/model/constants/RouteName';
+import { offsets } from '@src/app/styles/offsets';
 
 const MenuPage = () => {
   const navigation = useAppNavigation();
@@ -63,6 +64,7 @@ const MenuPage = () => {
           submitButtonTitle="Done"
           onAdditionalButtonPress={handleAddProductButtonClick}
           onSubmitButtonPress={handleDoneButtonClick}
+          style={{ paddingHorizontal: offsets.containerOffsetHorizontal }}
         />
       )}
     </SafeAreaView>
