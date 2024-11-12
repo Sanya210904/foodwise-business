@@ -1,9 +1,9 @@
 import axios from 'axios';
 import EncryptedStorage from 'react-native-encrypted-storage';
-import { API_URL } from '@env';
+import { API_MAIN_URL } from '@env';
 
 export const baseApi = axios.create({
-  baseURL: API_URL,
+  baseURL: API_MAIN_URL,
   withCredentials: true,
 });
 
@@ -29,9 +29,10 @@ baseApi.interceptors.response.use(
       console.log('Getting refresh tokens');
       originalRequest._isRetry = true;
       try {
-        const response = await axios.get(`${API_URL}/users/refresh`, {
+        const response = await axios.get(`${API_MAIN_URL}/users/refresh`, {
           withCredentials: true,
         });
+        console.log(response.data);
         await EncryptedStorage.setItem('token', response.data.accessToken);
         return baseApi.request(originalRequest);
       } catch (e) {
