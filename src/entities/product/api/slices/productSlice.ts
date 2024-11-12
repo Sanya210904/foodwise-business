@@ -17,6 +17,16 @@ const productSlice = createSlice({
     addProduct(state, action: PayloadAction<Product>) {
       state.products.push(action.payload);
     },
+    removeProduct(state, action: PayloadAction<string>) {
+      const productId = action.payload;
+
+      const currentProductIndex = state.products.findIndex(
+        product => product._id === productId,
+      );
+      if (currentProductIndex === -1) return;
+
+      state.products.splice(currentProductIndex, 1);
+    },
   },
   extraReducers: builder => {
     builder.addCase(fetchProducts.pending, state => {
@@ -45,4 +55,4 @@ const productSlice = createSlice({
 });
 
 export default productSlice.reducer;
-export const { addProduct } = productSlice.actions;
+export const { addProduct, removeProduct } = productSlice.actions;
