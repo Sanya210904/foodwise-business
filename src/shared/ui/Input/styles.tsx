@@ -20,6 +20,7 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     borderWidth: 1,
     borderColor: colors.inputPrimary,
+    textAlignVertical: 'top',
   },
   errorInput: {
     borderColor: colors.brandDanger,

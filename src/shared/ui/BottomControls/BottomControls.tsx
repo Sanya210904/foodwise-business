@@ -8,6 +8,9 @@ type BottomControlsProps = {
   additionalButtonTitle: string;
   onSubmitButtonPress: () => void;
   onAdditionalButtonPress: () => void;
+  isSubmitButtonDisabled?: boolean;
+  isSubmitButtonLoading?: boolean;
+  isAdditionalButtonDisabled?: boolean;
   style?: StyleProp<ViewStyle>;
 };
 
@@ -17,6 +20,9 @@ const BottomControls: FC<BottomControlsProps> = props => {
     additionalButtonTitle,
     onAdditionalButtonPress,
     onSubmitButtonPress,
+    isAdditionalButtonDisabled,
+    isSubmitButtonDisabled,
+    isSubmitButtonLoading,
     style,
   } = props;
 
@@ -27,6 +33,7 @@ const BottomControls: FC<BottomControlsProps> = props => {
         onPress={onAdditionalButtonPress}
         title={additionalButtonTitle}
         type={ButtonType.SECONDARY}
+        isDisabled={isAdditionalButtonDisabled}
       />
 
       <CustomButton
@@ -34,6 +41,8 @@ const BottomControls: FC<BottomControlsProps> = props => {
         title={submitButtonTitle}
         onPress={onSubmitButtonPress}
         type={ButtonType.PRIMARY}
+        isDisabled={isSubmitButtonDisabled}
+        isLoading={isSubmitButtonLoading}
       />
     </View>
   );

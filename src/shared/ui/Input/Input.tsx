@@ -6,11 +6,12 @@ import {
   DimensionValue,
   StyleProp,
   TextStyle,
+  TextInputProps,
 } from 'react-native';
 import { styles } from './styles';
 import { colors } from '../../../app/styles/colors';
 
-type InputProps = {
+type InputProps = TextInputProps & {
   label?: string;
   value: string;
   onChange: (value: string) => void;
@@ -35,12 +36,14 @@ const Input: FC<InputProps> = props => {
     secureTextEntry = false,
     errorText,
     style,
+    ...otherProps
   } = props;
 
   return (
     <View style={styles.container}>
       {label && <Text style={styles.label}>{label}</Text>}
       <TextInput
+        {...otherProps}
         placeholder={placeholder}
         placeholderTextColor={colors.textSecondary}
         onChangeText={text => onChange(text)}
