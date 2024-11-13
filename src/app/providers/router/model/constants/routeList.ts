@@ -6,13 +6,14 @@ import { MenuPage } from '@src/pages/MenuPage';
 import { OrdersPage } from '@src/pages/OrdersPage';
 import { ScannerPage } from '@src/pages/ScannerPage';
 import { ProfilePage } from '@src/pages/ProfilePage';
+import { CreateOrderPage } from '@src/pages/CreateOrderPage';
+import { CreateProductPage } from '@src/pages/CreateProductPage';
+import { EditShopPage } from '@src/pages/EditShopPage';
 
 import MenuIcon from '@src/shared/assets/icons/menu-icon.svg';
 import OrdersIcon from '@src/shared/assets/icons/orders-icon.svg';
 import ScannerIcon from '@src/shared/assets/icons/scanner-icon.svg';
 import ProfileIcon from '@src/shared/assets/icons/profile-icon.svg';
-import CreateProductPage from '@src/pages/CreateProductPage/ui/CreateProductPage';
-import EditShopPage from '@src/pages/EditShopPage/ui/EditShopPage';
 
 export const publicRoutes: Route[] = [
   {
@@ -29,6 +30,10 @@ export const privateRoutes: Route[] = [
   {
     name: RouteName.EDIT_SHOP,
     component: EditShopPage,
+  },
+  {
+    name: RouteName.CREATE_ORDER,
+    component: CreateOrderPage,
   },
 ];
 
