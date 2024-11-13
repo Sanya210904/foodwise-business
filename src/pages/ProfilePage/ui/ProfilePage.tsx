@@ -3,15 +3,14 @@ import CustomButton, {
 } from '@src/shared/ui/CustomButton/CustomButton';
 import React, { useEffect, useState } from 'react';
 import { View, Text, SafeAreaView, ActivityIndicator } from 'react-native';
-import { styles } from './styles';
 import { RevenueStat } from '@src/entities/stat';
 import { ShopCard } from '@src/entities/shop';
-import { useDispatch } from 'react-redux';
 import { fetchShop } from '@src/entities/shop/api/services/fetchShop';
 import { useAppDispatch } from '@src/shared/hooks/useAppDispatch';
 import { useAppSelector } from '@src/shared/hooks/useAppSelector';
 import BottomSheetDialog from '@src/shared/ui/Modal/BottomSheetDialog/BottomSheetDialog';
 import { fetchLogout } from '@src/features/auth/api/services/fetchLogout';
+import { styles } from './styles';
 
 const ProfilePage = () => {
   const dispatch = useAppDispatch();

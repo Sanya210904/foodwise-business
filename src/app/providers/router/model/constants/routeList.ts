@@ -1,18 +1,18 @@
 import { BottomTabRoute, Route } from '../types/Route';
 import { RouteName } from './RouteName';
 
-import LoginPage from '@src/pages/LoginPage/LoginPage';
-import MenuPage from '@src/pages/MenuPage/ui/MenuPage/MenuPage';
-import OrdersPage from '@src/pages/OrdersPage/OrdersPage';
-import ScannerPage from '@src/pages/ScannerPage/ScannerPage';
-import ProfilePage from '@src/pages/ProfilePage/ProfilePage';
+import { LoginPage } from '@src/pages/LoginPage';
+import { MenuPage } from '@src/pages/MenuPage';
+import { OrdersPage } from '@src/pages/OrdersPage';
+import { ScannerPage } from '@src/pages/ScannerPage';
+import { ProfilePage } from '@src/pages/ProfilePage';
 
 import MenuIcon from '@src/shared/assets/icons/menu-icon.svg';
 import OrdersIcon from '@src/shared/assets/icons/orders-icon.svg';
 import ScannerIcon from '@src/shared/assets/icons/scanner-icon.svg';
 import ProfileIcon from '@src/shared/assets/icons/profile-icon.svg';
-import CreateProductPage from '@src/pages/CreateProductPage/CreateProductPage';
-import EditShopPage from '@src/pages/EditShopPage/EditShopPage';
+import CreateProductPage from '@src/pages/CreateProductPage/ui/CreateProductPage';
+import EditShopPage from '@src/pages/EditShopPage/ui/EditShopPage';
 
 export const publicRoutes: Route[] = [
   {

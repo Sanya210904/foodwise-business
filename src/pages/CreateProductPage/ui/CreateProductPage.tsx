@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, SafeAreaView } from 'react-native';
-import { styles } from './styles';
 import { ProductCreateForm } from '@src/features/createProduct';
+import { styles } from './styles';
 
 const CreateProductPage = () => {
   return (

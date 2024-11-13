@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, KeyboardAvoidingView } from 'react-native';
-import { styles } from './styles';
+import { View, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { EditShopForm } from '@src/features/editShop';
+import { styles } from './styles';
 
 const EditShopPage = () => {
   return (

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
   View,
   Text,
@@ -5,9 +6,9 @@ import {
   KeyboardAvoidingView,
   Dimensions,
 } from 'react-native';
-import { LoginForm } from '../../features/auth';
-import GradientText from '../../shared/ui/GradientText/GradientText';
-import DismissKeyboard from '../../shared/ui/DismissKeyboard/DismissKeyboard';
+import { LoginForm } from '../../../features/auth';
+import GradientText from '../../../shared/ui/GradientText/GradientText';
+import DismissKeyboard from '../../../shared/ui/DismissKeyboard/DismissKeyboard';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -15,9 +16,8 @@ import Animated, {
   withTiming,
   withDelay,
 } from 'react-native-reanimated';
-import { colors } from '../../app/styles/colors';
+import { colors } from '../../../app/styles/colors';
 import { styles } from './styles';
-import { useEffect } from 'react';
 
 const height = Dimensions.get('screen').height;
 

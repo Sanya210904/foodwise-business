@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
-import { offsets } from '../../app/styles/offsets';
-import { colors } from '../../app/styles/colors';
-import { fonts } from '../../app/styles/fonts';
+import { offsets } from '../../../app/styles/offsets';
+import { colors } from '../../../app/styles/colors';
+import { fonts } from '../../../app/styles/fonts';
 
 export const styles = StyleSheet.create({
   screen: {
