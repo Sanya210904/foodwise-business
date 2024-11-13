@@ -7,20 +7,28 @@ import { View, Text, Image } from 'react-native';
 import { styles } from './styles';
 import { useAppSelector } from '@src/shared/hooks/useAppSelector';
 import ClockIcon from '@src/shared/assets/icons/clock-icon.svg';
+import { useAppNavigation } from '@src/shared/hooks/useAppNavigation';
+import { RouteName } from '@src/app/providers/router/model/constants/RouteName';
+import { API_MAIN_IMAGE_URL } from '@env';
 
 const ShopCard = () => {
+  const navigation = useAppNavigation();
   const shop = useAppSelector(state => state.shop.shop);
+
+  const handleEditProfileButton = () => {
+    navigation.navigate(RouteName.EDIT_SHOP);
+  };
 
   return (
     <Card width={'100%'}>
       <Image
         style={styles.banner}
-        source={require('../../../../shared/assets/images/banner.jpg')}
+        source={{ uri: `${API_MAIN_IMAGE_URL}/${shop.banner}` }}
       />
       <View style={styles.cardInfo}>
         <View style={styles.cardInfoBlock}>
           <Image
-            source={require('../../../../shared/assets/images/logo.jpg')}
+            source={{ uri: `${API_MAIN_IMAGE_URL}/${shop.logo}` }}
             style={styles.logo}
           />
           <View>
@@ -38,7 +46,7 @@ const ShopCard = () => {
           width={87}
           height={31}
           title="Edit profile"
-          onPress={() => undefined}
+          onPress={handleEditProfileButton}
           type={ButtonType.LINK}
           textStyle={styles.buttonText}
         />

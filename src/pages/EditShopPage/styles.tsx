@@ -18,5 +18,6 @@ export const styles = StyleSheet.create({
     fontSize: 28,
     fontFamily: fonts[700],
     textAlign: 'center',
+    marginBottom: 24,
   },
 });

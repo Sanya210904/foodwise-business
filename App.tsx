@@ -21,7 +21,6 @@ const App = () => {
 
   const getToken = async () => {
     const token = await EncryptedStorage.getItem('token');
-    console.log(token);
   };
 
   if (isAppLoading) {
