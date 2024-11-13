@@ -18,11 +18,11 @@ export const styles = StyleSheet.create({
   closeButton: {
     position: 'absolute',
     top: 10,
-    right: 9,
+    right: 10,
     width: 29,
     height: 29,
     zIndex: 4,
-    borderRadius: 14.5,
+    borderRadius: '50%',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',

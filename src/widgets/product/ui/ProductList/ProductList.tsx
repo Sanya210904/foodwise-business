@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
-import { Dimensions, FlatList, Text, View } from 'react-native';
-import ProductItem from '../ProductItem/ProductItem';
+import { Dimensions, View } from 'react-native';
+import { ProductItem } from '@src/entities/product';
 import { FlashList } from '@shopify/flash-list';
 import { useAppSelector } from '@src/shared/hooks/useAppSelector';
 import { useAppDispatch } from '@src/shared/hooks/useAppDispatch';
-import { fetchProducts } from '../../api/services/fetchProducts';
 import { styles } from './styles';
 import { offsets } from '@src/app/styles/offsets';
+import { useAppNavigation } from '@src/shared/hooks/useAppNavigation';
+import { fetchProducts } from '@src/entities/product/api/services/fetchProducts';
+import { fetchDeleteProduct } from '@src/features/deleteProduct';
 
 const screenWidth = Dimensions.get('screen').width;
 const cardColumnGap = 14;
@@ -14,13 +16,20 @@ const cardWidth =
   (screenWidth - offsets.containerOffsetHorizontal * 2 - cardColumnGap) / 2;
 
 const ProductList = () => {
+  const navigation = useAppNavigation();
   const dispatch = useAppDispatch();
+
   const products = useAppSelector(state => state.products.products);
-  const isLoading = useAppSelector(state => state.products.isLoading);
 
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
+
+  const handleCardPress = (id: string) => {};
+
+  const handleDeleteProduct = (id: string) => {
+    dispatch(fetchDeleteProduct(id));
+  };
 
   return (
     <View style={styles.listWrapper}>
@@ -36,9 +45,10 @@ const ProductList = () => {
           <ProductItem
             id={item._id}
             title={item.title}
-            imageUrl={item.image}
+            imageId={item.image}
             price={item.price.$numberDecimal}
-            isEdit={false}
+            onCardPress={handleCardPress}
+            onRemove={handleDeleteProduct}
           />
         )}
       />

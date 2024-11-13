@@ -1,8 +1,9 @@
-import ProductList from './ui/ProductList/ProductList';
+import ProductItem from './ui/ProductItem/ProductItem';
+
 import productSlice from './api/slices/productSlice';
 import { addProduct } from './api/slices/productSlice';
 
-export { ProductList };
+export { ProductItem };
 
 export { productSlice };
 export { addProduct };

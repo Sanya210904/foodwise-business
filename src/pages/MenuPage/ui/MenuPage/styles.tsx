@@ -13,16 +13,6 @@ export const styles = StyleSheet.create({
     paddingHorizontal: offsets.containerOffsetHorizontal,
     paddingBottom: offsets.containerOffsetBottom,
   },
-  header: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  title: {
-    fontSize: 28,
-    fontFamily: fonts[700],
-  },
   input: {
     marginTop: 16,
   },

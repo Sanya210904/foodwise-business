@@ -2,7 +2,7 @@ import { BottomTabRoute, Route } from '../types/Route';
 import { RouteName } from './RouteName';
 
 import LoginPage from '@src/pages/LoginPage/LoginPage';
-import MenuPage from '@src/pages/MenuPage/MenuPage';
+import MenuPage from '@src/pages/MenuPage/ui/MenuPage/MenuPage';
 import OrdersPage from '@src/pages/OrdersPage/OrdersPage';
 import ScannerPage from '@src/pages/ScannerPage/ScannerPage';
 import ProfilePage from '@src/pages/ProfilePage/ProfilePage';
