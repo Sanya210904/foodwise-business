@@ -9,6 +9,7 @@ import { offsets } from '@src/app/styles/offsets';
 import { useAppNavigation } from '@src/shared/hooks/useAppNavigation';
 import { fetchProducts } from '@src/entities/product/api/services/fetchProducts';
 import { fetchDeleteProduct } from '@src/features/deleteProduct';
+import { RouteName } from '@src/app/providers/router/model/constants/RouteName';
 
 const screenWidth = Dimensions.get('screen').width;
 const cardColumnGap = 14;
@@ -25,7 +26,14 @@ const ProductList = () => {
     dispatch(fetchProducts());
   }, []);
 
-  const handleCardPress = (id: string) => {};
+  const handleCardPress = (
+    id: string,
+    image: string,
+    title: string,
+    price: string,
+  ) => {
+    navigation.navigate(RouteName.CREATE_ORDER, { id, image, title, price });
+  };
 
   const handleDeleteProduct = (id: string) => {
     dispatch(fetchDeleteProduct(id));

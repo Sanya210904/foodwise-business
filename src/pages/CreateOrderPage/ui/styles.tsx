@@ -11,5 +11,12 @@ export const styles = StyleSheet.create({
     paddingTop: offsets.containerOffsetTop,
     paddingHorizontal: offsets.containerOffsetHorizontal,
     paddingBottom: offsets.containerOffsetBottom,
+    flex: 1,
+  },
+  infoBlock: {
+    marginBottom: 24,
+  },
+  formWrapper: {
+    flex: 1,
   },
 });

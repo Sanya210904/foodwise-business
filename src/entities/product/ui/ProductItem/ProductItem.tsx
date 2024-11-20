@@ -15,7 +15,12 @@ type ProductItemProps = {
   price: string;
   isEdit?: boolean;
   onRemove: (id: string) => void;
-  onCardPress: (id: string) => void;
+  onCardPress: (
+    id: string,
+    image: string,
+    title: string,
+    price: string,
+  ) => void;
 };
 
 const ProductItem: FC<ProductItemProps> = props => {
@@ -25,7 +30,7 @@ const ProductItem: FC<ProductItemProps> = props => {
     <View style={[styles.block]}>
       <TouchableOpacity
         disabled={isEdit}
-        onPress={() => onCardPress(id)}
+        onPress={() => onCardPress(id, imageId, title, price)}
         activeOpacity={0.75}>
         {isEdit && (
           <CustomButton

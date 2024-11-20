@@ -74,7 +74,7 @@ const CustomButton: FC<CustomButtonProps> = props => {
       disabled={isDisabled || isLoading}>
       {type === ButtonType.PRIMARY && !isDisabled && !isLoading ? (
         <LinearGradient
-          style={[styles.primary, styles.container]}
+          style={[styles.primary, styles.container, style]}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
           colors={[colors.buttonPrimaryFrom, colors.buttonPrimaryTo]}>

@@ -6,12 +6,11 @@ import {
   DimensionValue,
   StyleProp,
   TextStyle,
-  TextInputProps,
 } from 'react-native';
 import { styles } from './styles';
 import { colors } from '../../../app/styles/colors';
 
-type InputProps = TextInputProps & {
+type InputProps = {
   label?: string;
   value: string;
   onChange: (value: string) => void;

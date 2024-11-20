@@ -8,5 +8,10 @@ export type TypeRootStackParamsList = {
   [RouteName.PROFILE]: undefined;
   [RouteName.CREATE_PRODUCT]: undefined;
   [RouteName.EDIT_SHOP]: undefined;
-  [RouteName.CREATE_ORDER]: { id: string };
+  [RouteName.CREATE_ORDER]: {
+    id: string;
+    image: string;
+    title: string;
+    price: string;
+  };
 };
