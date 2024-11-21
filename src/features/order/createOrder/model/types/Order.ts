@@ -1,5 +1,5 @@
 export type OrderCreateFields = {
-  discount: string;
+  discount: number;
   expDate: string;
-  quantity: string;
+  quantity: number;
 };

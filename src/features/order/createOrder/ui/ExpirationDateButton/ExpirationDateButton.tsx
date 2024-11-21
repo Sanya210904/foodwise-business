@@ -3,8 +3,8 @@ import { StyleProp, ViewStyle } from 'react-native';
 import CustomButton, {
   ButtonType,
 } from '@src/shared/ui/CustomButton/CustomButton';
+import { ExpDateValue } from '../../model/constants/expDateButtons';
 import { styles } from './styles';
-import { ExpDateValue } from '../../model/constants/ExpDateValue';
 
 type ExpirationDateButtonProps = {
   title: string;

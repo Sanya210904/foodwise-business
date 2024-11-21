@@ -1,5 +1,11 @@
 import React from 'react';
-import { View, SafeAreaView, Image, KeyboardAvoidingView } from 'react-native';
+import {
+  View,
+  SafeAreaView,
+  Image,
+  KeyboardAvoidingView,
+  ScrollView,
+} from 'react-native';
 import { styles } from './styles';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { RouteName } from '@src/app/providers/router/model/constants/RouteName';
@@ -19,21 +25,30 @@ const CreateOrderPage = () => {
 
   return (
     <SafeAreaView style={styles.screen}>
-      <DismissKeyboard>
-        <View style={styles.container}>
-          <ProductInfoBlock
-            style={styles.infoBlock}
-            image={image}
-            title={title}
-            price={price}
-            discountPrice={discountPrice}
-          />
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior="padding"
+        keyboardVerticalOffset={8}>
+        <ScrollView
+          contentContainerStyle={{ flexGrow: 1 }}
+          keyboardShouldPersistTaps="handled">
+          <DismissKeyboard>
+            <View style={styles.container}>
+              <ProductInfoBlock
+                style={styles.infoBlock}
+                image={image}
+                title={title}
+                price={price}
+                discountPrice={discountPrice}
+              />
 
-          <View style={styles.formWrapper}>
-            <CreateOrderForm productId={id} price={price} />
-          </View>
-        </View>
-      </DismissKeyboard>
+              <View style={styles.formWrapper}>
+                <CreateOrderForm productId={id} price={price} />
+              </View>
+            </View>
+          </DismissKeyboard>
+        </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };

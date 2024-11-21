@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC, useMemo } from 'react';
 import {
   View,
   Text,
@@ -6,15 +6,22 @@ import {
   DimensionValue,
   StyleProp,
   TextStyle,
+  KeyboardType,
 } from 'react-native';
 import { styles } from './styles';
 import { colors } from '../../../app/styles/colors';
 
+export enum InputType {
+  TEXT = 'text',
+  NUMBER = 'number',
+}
+
 type InputProps = {
   label?: string;
-  value: string;
-  onChange: (value: string) => void;
+  value: string | number;
+  onChange: (value: string | number) => void;
   onBlur?: () => void;
+  type?: InputType;
   secureTextEntry?: boolean;
   placeholder?: string;
   width?: DimensionValue;
@@ -32,11 +39,19 @@ const Input: FC<InputProps> = props => {
     height = 42,
     placeholder = '',
     onBlur,
+    type,
     secureTextEntry = false,
     errorText,
     style,
     ...otherProps
   } = props;
+
+  const keyboardType = useMemo((): KeyboardType => {
+    if (type === InputType.TEXT) return 'default';
+    if (type === InputType.NUMBER) return 'numeric';
+
+    return 'default';
+  }, [type]);
 
   return (
     <View style={styles.container}>
@@ -47,7 +62,7 @@ const Input: FC<InputProps> = props => {
         placeholderTextColor={colors.textSecondary}
         onChangeText={text => onChange(text)}
         onBlur={onBlur}
-        value={value}
+        value={value?.toString()}
         secureTextEntry={secureTextEntry}
         style={[
           styles.input,
@@ -55,6 +70,7 @@ const Input: FC<InputProps> = props => {
           { width, height },
           style,
         ]}
+        keyboardType={keyboardType}
       />
       {errorText && <Text style={styles.errorText}>{errorText}</Text>}
     </View>

@@ -1,28 +1,30 @@
-import { KeyboardAvoidingView, View } from 'react-native';
+import { View } from 'react-native';
 import React, { FC, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import Input from '@src/shared/ui/Input/Input';
+import Input, { InputType } from '@src/shared/ui/Input/Input';
 import BottomControls from '@src/shared/ui/BottomControls/BottomControls';
 import { useAppNavigation } from '@src/shared/hooks/useAppNavigation';
 import { useAppDispatch } from '@src/shared/hooks/useAppDispatch';
 import {
   setDiscount,
   setDiscountPrice,
-  setExpDate,
-  setQuantity,
 } from '../../api/slices/orderCreateSlice';
 import { getDiscountPrice } from '../../model/lib/getDiscountPrice';
-import { styles } from './styles';
 import ExpirationDateButtonGroup from '../ExpirationDateButtonGroup/ExpirationDateButtonGroup';
-import { expDateLabelToDate } from '../../model/constants/expDateLabelToDate';
-import { ExpDateValue } from '../../model/constants/ExpDateValue';
+import {
+  expDateLabelToDate,
+  ExpDateValue,
+} from '../../model/constants/expDateButtons';
 import { getReadableDateWithAddedDays } from '../../model/lib/getReadableDateWithAddedDays';
-import { OrderCreateFields } from '../../model/types/Order';
-import { getIsoDateWithAddedDays } from '../../model/lib/getIsoDateWithAddedDays';
 import { getIsoDateFromLocaleString } from '../../model/lib/getIsoDateFromLocaleString';
 import { fetchCreateOrder } from '../../api/services/fetchCreateOrder';
-import { FetchCreateOrderRequest } from '../../model/types/FetchCreateOrder';
 import { useAppSelector } from '@src/shared/hooks/useAppSelector';
+import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  CreateOrderFormData,
+  CreateOrderSchema,
+} from '../../model/types/OrderFormSchema';
+import { styles } from './styles';
 
 type CreateOrderFormProps = {
   productId: string;
@@ -32,6 +34,7 @@ type CreateOrderFormProps = {
 const CreateOrderForm: FC<CreateOrderFormProps> = props => {
   const { price, productId } = props;
   const dispatch = useAppDispatch();
+  const isLoading = useAppSelector(state => state.orderCreate.isLoading);
   const navigation = useAppNavigation();
   const {
     control,
@@ -39,12 +42,9 @@ const CreateOrderForm: FC<CreateOrderFormProps> = props => {
     setValue,
     reset,
     formState: { errors },
-  } = useForm({
-    defaultValues: {
-      discount: '',
-      quantity: '',
-      expDate: '',
-    },
+  } = useForm<CreateOrderFormData>({
+    resolver: zodResolver(CreateOrderSchema),
+    mode: 'onChange',
   });
 
   const [toResetExpDateButtons, setResetExpDateButtons] =
@@ -54,11 +54,11 @@ const CreateOrderForm: FC<CreateOrderFormProps> = props => {
     navigation.goBack();
   };
 
-  const handleDiscountChange = (discount: string) => {
+  const handleDiscountChange = (discount: number) => {
     dispatch(setDiscount(discount));
     setValue('discount', discount);
 
-    if (discount === '' || Number(discount) <= 0 || Number(discount) > 100) {
+    if (!isFinite(discount) || discount <= 0 || discount > 100) {
       dispatch(setDiscountPrice(null));
     } else {
       const discountPrice = getDiscountPrice(Number(price), Number(discount));
@@ -66,32 +66,22 @@ const CreateOrderForm: FC<CreateOrderFormProps> = props => {
     }
   };
 
-  const handleQuantityChange = (quantity: string) => {
-    dispatch(setQuantity(quantity));
-    setValue('quantity', quantity);
-  };
-
-  const handleExpDateChange = (expDate: string) => {
-    dispatch(setExpDate(expDate));
-    setValue('expDate', expDate);
-  };
-
   const handleExpDateButtonChange = (expValue: ExpDateValue) => {
     const daysToAdd = expDateLabelToDate[expValue];
 
     const expDate = getReadableDateWithAddedDays(daysToAdd);
-    setValue('expDate', expDate);
+    setValue('expDate', expDate, { shouldValidate: true });
   };
 
-  const onSubmit = async (data: OrderCreateFields) => {
+  const onSubmit = async (data: CreateOrderFormData) => {
     setResetExpDateButtons(false);
     const isoDate = getIsoDateFromLocaleString(data.expDate);
 
     const dataToSend = {
       product_id: productId,
       expiration_date: isoDate,
-      quantity: Number(data.quantity),
-      discount: Number(data.discount),
+      quantity: data.quantity as number,
+      discount: data.discount as number,
     };
 
     try {
@@ -111,16 +101,14 @@ const CreateOrderForm: FC<CreateOrderFormProps> = props => {
         <Controller
           name="discount"
           control={control}
-          rules={{
-            required: { value: true, message: 'Discount is required field' },
-          }}
           render={({ field: { onBlur, value } }) => (
             <Input
               label="Size of discount (%):"
               placeholder="Enter discount"
               onBlur={onBlur}
-              onChange={value => handleDiscountChange(value)}
-              value={value}
+              onChange={value => handleDiscountChange(Number(value))}
+              value={value || ''}
+              type={InputType.NUMBER}
               errorText={errors.discount?.message}
             />
           )}
@@ -129,16 +117,14 @@ const CreateOrderForm: FC<CreateOrderFormProps> = props => {
         <Controller
           name="quantity"
           control={control}
-          rules={{
-            required: { value: true, message: 'Amount is required field' },
-          }}
-          render={({ field: { onBlur, value } }) => (
+          render={({ field: { onBlur, onChange, value } }) => (
             <Input
               label="Amount (units):"
               placeholder="Enter amount"
               onBlur={onBlur}
-              onChange={value => handleQuantityChange(value)}
-              value={value}
+              onChange={value => onChange(Number(value))}
+              value={value || ''}
+              type={InputType.NUMBER}
               errorText={errors.quantity?.message}
             />
           )}
@@ -148,18 +134,12 @@ const CreateOrderForm: FC<CreateOrderFormProps> = props => {
           <Controller
             name="expDate"
             control={control}
-            rules={{
-              required: {
-                value: true,
-                message: 'Expiration date is required field',
-              },
-            }}
-            render={({ field: { onBlur, value } }) => (
+            render={({ field: { onBlur, onChange, value } }) => (
               <Input
                 label="Expiration date:"
                 placeholder="DD / MM / YY"
                 onBlur={onBlur}
-                onChange={value => handleExpDateChange(value)}
+                onChange={value => onChange(value)}
                 value={value}
                 errorText={errors.expDate?.message}
               />
@@ -178,6 +158,9 @@ const CreateOrderForm: FC<CreateOrderFormProps> = props => {
         additionalButtonTitle="Cancel"
         onSubmitButtonPress={handleSubmit(onSubmit)}
         onAdditionalButtonPress={handleGoBack}
+        isAdditionalButtonDisabled={isLoading}
+        isSubmitButtonLoading={isLoading}
+        isSubmitButtonDisabled={isLoading}
       />
     </View>
   );

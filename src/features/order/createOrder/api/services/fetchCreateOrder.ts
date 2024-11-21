@@ -10,15 +10,12 @@ export const fetchCreateOrder = createAsyncThunk<
 >('orders/create', async (data, { rejectWithValue }) => {
   console.log('request');
   try {
-    console.log(data);
     const response = await baseApi.post(`products/props`, data);
-    console.log(response);
 
-    // if (response.status !== 200) {
-    //   throw new Error('Error while fetching orders');
-    // }
+    if (response.status !== 200) {
+      throw new Error('Error while creating order');
+    }
 
-    console.log(response);
     return response.data;
   } catch (error: any) {
     console.log('Error');

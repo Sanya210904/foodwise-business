@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 import { View } from 'react-native';
 import ExpirationDateButton from '../ExpirationDateButton/ExpirationDateButton';
 import { expDateButtons } from '../../model/constants/expDateButtons';
-import { ExpDateValue } from '../../model/constants/ExpDateValue';
+import { ExpDateValue } from '../../model/constants/expDateButtons';
 import { styles } from './styles';
 
 type ExpirationDateButtonGroupProps = {

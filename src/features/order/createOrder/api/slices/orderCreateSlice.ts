@@ -3,9 +3,9 @@ import { OrderCreateSchema } from '../../model/types/OrderCreateSchema';
 import { fetchCreateOrder } from '../services/fetchCreateOrder';
 
 const initialState: OrderCreateSchema = {
-  discount: '',
+  discount: 0,
   discountPrice: null,
-  quantity: '',
+  quantity: 0,
   expDate: '',
 
   isLoading: false,
@@ -16,14 +16,8 @@ const orderCreateSlice = createSlice({
   name: 'orderCreate',
   initialState,
   reducers: {
-    setDiscount: (state, action: PayloadAction<string>) => {
+    setDiscount: (state, action: PayloadAction<number>) => {
       state.discount = action.payload;
-    },
-    setQuantity: (state, action: PayloadAction<string>) => {
-      state.quantity = action.payload;
-    },
-    setExpDate: (state, action: PayloadAction<string>) => {
-      state.expDate = action.payload;
     },
     setDiscountPrice: (state, action: PayloadAction<string | null>) => {
       state.discountPrice = action.payload;
@@ -44,5 +38,4 @@ const orderCreateSlice = createSlice({
 });
 
 export default orderCreateSlice.reducer;
-export const { setDiscount, setExpDate, setQuantity, setDiscountPrice } =
-  orderCreateSlice.actions;
+export const { setDiscount, setDiscountPrice } = orderCreateSlice.actions;
