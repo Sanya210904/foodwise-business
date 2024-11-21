@@ -1,9 +1,8 @@
-import { View, StyleProp, ViewStyle, Text } from 'react-native';
+import { View, StyleProp, ViewStyle, Text, ScrollView } from 'react-native';
 import React, { FC, useState } from 'react';
 import { useAppDispatch } from '@src/shared/hooks/useAppDispatch';
 import { Controller, useForm } from 'react-hook-form';
 import Input from '@src/shared/ui/Input/Input';
-import { styles } from './styles';
 import ImagePicker from '@src/shared/ui/ImagePicker/ImagePicker';
 import CustomButton, {
   ButtonType,
@@ -12,6 +11,7 @@ import { useAppNavigation } from '@src/shared/hooks/useAppNavigation';
 import { fetchCreateProduct } from '../../api/services/fetchCreateProduct';
 import { CreateProductFields } from '../../model/types/CreateProduct';
 import { useAppSelector } from '@src/shared/hooks/useAppSelector';
+import { styles } from './styles';
 
 type ProductCreateFormProps = {
   style?: StyleProp<ViewStyle>;

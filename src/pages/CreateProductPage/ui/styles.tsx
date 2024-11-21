@@ -14,6 +14,12 @@ export const styles = StyleSheet.create({
     paddingHorizontal: offsets.containerOffsetHorizontal,
     flex: 1,
   },
+  scrollContainer: {
+    flexGrow: 1,
+  },
+  keyboardAvoiding: {
+    flex: 1,
+  },
   title: {
     fontSize: 28,
     fontFamily: fonts[700],
