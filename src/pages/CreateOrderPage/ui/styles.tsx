@@ -7,6 +7,12 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.surfacePrimary,
     flex: 1,
   },
+  keyboardAvoiding: {
+    flex: 1,
+  },
+  scrollContainer: {
+    flexGrow: 1
+  },
   container: {
     paddingTop: offsets.containerOffsetTop,
     paddingHorizontal: offsets.containerOffsetHorizontal,

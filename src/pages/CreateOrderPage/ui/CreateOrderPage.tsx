@@ -26,11 +26,11 @@ const CreateOrderPage = () => {
   return (
     <SafeAreaView style={styles.screen}>
       <KeyboardAvoidingView
-        style={{ flex: 1 }}
+        style={styles.keyboardAvoiding}
         behavior="padding"
         keyboardVerticalOffset={8}>
         <ScrollView
-          contentContainerStyle={{ flexGrow: 1 }}
+          contentContainerStyle={styles.scrollContainer}
           keyboardShouldPersistTaps="handled">
           <DismissKeyboard>
             <View style={styles.container}>
