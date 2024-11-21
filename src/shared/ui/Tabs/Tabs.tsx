@@ -1,5 +1,11 @@
 import { FC, useMemo } from 'react';
-import { Text, TouchableOpacity, Dimensions } from 'react-native';
+import {
+  Text,
+  TouchableOpacity,
+  Dimensions,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
 import Card from '../Card/Card';
 import { Option } from '@src/shared/types/Option';
 import Animated, { useSharedValue, withTiming } from 'react-native-reanimated';
@@ -10,6 +16,7 @@ type TabsProps = {
   onChange: (value: string) => void;
   tabs: Option[];
   value: string;
+  style?: StyleProp<ViewStyle>;
 };
 
 const tabBlockOffsetHorizontal = 4;
@@ -18,7 +25,7 @@ const tabBlockWidth = screenWidth - offsets.containerOffsetHorizontal * 2;
 const tabBlockInnerWidth = tabBlockWidth - tabBlockOffsetHorizontal * 2;
 
 const Tabs: FC<TabsProps> = props => {
-  const { tabs, value, onChange } = props;
+  const { tabs, value, onChange, style } = props;
   const tabLeftPosition = useSharedValue(tabBlockOffsetHorizontal);
 
   const tabOverlayWidth = useMemo(
@@ -37,6 +44,7 @@ const Tabs: FC<TabsProps> = props => {
       cardStyles={[
         styles.tabBlock,
         { paddingHorizontal: tabBlockOffsetHorizontal },
+        style,
       ]}
       width={'100%'}
       height={48}>
