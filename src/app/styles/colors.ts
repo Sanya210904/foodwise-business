@@ -9,7 +9,7 @@ export const colors = {
 
   brandPrimaryFrom: '#6696ad',
   brandPrimaryTo: '#bdd4d7',
-  brandDanger: '#eb4b3f',
+  brandDanger: '#D3393C',
   brandSuccess: '#5dbc83',
 
   buttonPrimaryFrom: '#6696ad',
