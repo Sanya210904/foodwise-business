@@ -1,20 +1,29 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { baseApi } from '@src/shared/config/api/baseApi';
 import { ServerError } from '@src/shared/types/ServerError';
-import { FetchCreateOrderRequest } from '../../model/types/FetchCreateOrder';
+import {
+  FetchCreateOrderRequest,
+  FetchCreateOrderResponse,
+} from '../../model/types/FetchCreateOrder';
+import { AxiosResponse } from 'axios';
+import { addOrder } from '@src/entities/order';
 
 export const fetchCreateOrder = createAsyncThunk<
-  undefined,
+  FetchCreateOrderResponse,
   FetchCreateOrderRequest,
   { rejectValue: ServerError }
->('orders/create', async (data, { rejectWithValue }) => {
+>('orders/create', async (data, { rejectWithValue, dispatch }) => {
   console.log('request');
   try {
-    const response = await baseApi.post(`products/props`, data);
+    const response: AxiosResponse<FetchCreateOrderResponse> =
+      await baseApi.post(`products/props`, data);
 
     if (response.status !== 200) {
       throw new Error('Error while creating order');
     }
+
+    const order = response.data.data;
+    dispatch(addOrder(order));
 
     return response.data;
   } catch (error: any) {
