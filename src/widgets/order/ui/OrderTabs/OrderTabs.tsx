@@ -4,7 +4,7 @@ import { orderTabs } from '../../model/constants/orderTabs';
 import Tabs from '@src/shared/ui/Tabs/Tabs';
 import { useAppDispatch } from '@src/shared/hooks/useAppDispatch';
 import { useAppSelector } from '@src/shared/hooks/useAppSelector';
-import { OrderCategories, setOrderFilter } from '@src/entities/order';
+import { ORDER_CATEGORIES, setOrderFilter } from '@src/entities/order';
 
 type OrderTabsProps = {
   style?: StyleProp<ViewStyle>;
@@ -15,7 +15,7 @@ const OrderTabs: FC<OrderTabsProps> = props => {
   const dispatch = useAppDispatch();
   const orderFilter = useAppSelector(state => state.orders.orderFilter);
 
-  const handleFilterChange = (value: OrderCategories) => {
+  const handleFilterChange = (value: ORDER_CATEGORIES) => {
     dispatch(setOrderFilter(value));
   };
 

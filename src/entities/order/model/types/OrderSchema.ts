@@ -1,9 +1,14 @@
-import { OrderCategories } from '../constants/OrderCategories';
+import { ORDER_CATEGORIES } from '../constants/OrderCategories';
 import { Order } from './Order';
 
 export type OrderSchema = {
   orders: Order[];
-  orderFilter: OrderCategories;
-  isLoading: boolean;
+  orderFilter: ORDER_CATEGORIES;
+  isLoading: OrderLoading;
   error: string | null;
+};
+
+type OrderLoading = {
+  list: boolean;
+  delete: boolean;
 };

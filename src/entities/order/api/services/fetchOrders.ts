@@ -2,11 +2,11 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { baseApi } from '@src/shared/config/api/baseApi';
 import { ServerError } from '@src/shared/types/ServerError';
 import { FetchOrdersResponse } from '../../model/types/FetchOrder';
-import { OrderCategories } from '../../model/constants/OrderCategories';
+import { ORDER_CATEGORIES } from '../../model/constants/OrderCategories';
 
 export const fetchOrders = createAsyncThunk<
   FetchOrdersResponse,
-  OrderCategories,
+  ORDER_CATEGORIES,
   { rejectValue: ServerError }
 >('orders/fetch', async (category, { rejectWithValue }) => {
   try {

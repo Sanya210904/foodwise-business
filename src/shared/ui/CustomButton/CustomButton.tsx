@@ -7,11 +7,13 @@ import {
   DimensionValue,
   ActivityIndicator,
   TextStyle,
+  Image,
 } from 'react-native';
 import React, { FC, useMemo } from 'react';
 import { styles } from './styles';
 import LinearGradient from 'react-native-linear-gradient';
 import { colors } from '../../../app/styles/colors';
+import { SvgProps } from 'react-native-svg';
 
 export enum ButtonType {
   PRIMARY = 'primary',
@@ -23,14 +25,15 @@ export enum ButtonType {
 }
 
 type CustomButtonProps = {
-  title: string;
-  icon?: string;
+  title?: string;
+  Icon?: FC<SvgProps>;
   onPress: () => void;
   type?: ButtonType;
   isDisabled?: boolean;
   isLoading?: boolean;
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
+  iconProps?: SvgProps;
   width?: DimensionValue;
   height?: DimensionValue;
 };
@@ -38,13 +41,14 @@ type CustomButtonProps = {
 const CustomButton: FC<CustomButtonProps> = props => {
   const {
     title,
-    icon,
+    Icon,
     onPress,
     type = ButtonType.PRIMARY,
     isDisabled = false,
     isLoading = false,
     style,
     textStyle,
+    iconProps,
     width = '100%',
     height = 60,
   } = props;
@@ -66,7 +70,16 @@ const CustomButton: FC<CustomButtonProps> = props => {
     else return styles.text;
   }, []);
 
-  const buttonContent = (
+  const buttonContent = isLoading ? (
+    <ActivityIndicator color={'#fff'} />
+  ) : (
+    <View style={styles.container}>
+      {Icon && <Icon {...iconProps} />}
+      {title && <Text style={[getButtonTextStyles, textStyle]}>{title}</Text>}
+    </View>
+  );
+
+  return (
     <TouchableOpacity
       style={[getButtonStyles, styles.button, { width, height }, style]}
       onPress={onPress}
@@ -78,25 +91,13 @@ const CustomButton: FC<CustomButtonProps> = props => {
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
           colors={[colors.buttonPrimaryFrom, colors.buttonPrimaryTo]}>
-          {isLoading ? (
-            <ActivityIndicator color={'#fff'} />
-          ) : (
-            <Text style={[getButtonTextStyles, textStyle]}>{title}</Text>
-          )}
+          {buttonContent}
         </LinearGradient>
       ) : (
-        <View style={styles.container}>
-          {isLoading ? (
-            <ActivityIndicator color={'#fff'} />
-          ) : (
-            <Text style={[getButtonTextStyles, textStyle]}>{title}</Text>
-          )}
-        </View>
+        <View style={styles.container}>{buttonContent}</View>
       )}
     </TouchableOpacity>
   );
-
-  return buttonContent;
 };
 
 export default CustomButton;

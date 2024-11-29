@@ -3,13 +3,14 @@ import { styles } from './styles';
 import { useAppSelector } from '@src/shared/hooks/useAppSelector';
 import { useAppDispatch } from '@src/shared/hooks/useAppDispatch';
 import { FlashList } from '@shopify/flash-list';
-import { fetchOrders, OrderItem } from '@src/entities/order';
+import { fetchOrders } from '@src/entities/order';
 import { ActivityIndicator, View } from 'react-native';
+import DeleteOrderItem from '@src/features/order/deleteOrder/ui/DeleteOrderItem/DeleteOrderItem';
 
 const OrderList = () => {
   const dispatch = useAppDispatch();
   const orders = useAppSelector(state => state.orders.orders);
-  const isLoading = useAppSelector(state => state.orders.isLoading);
+  const isLoading = useAppSelector(state => state.orders.isLoading['list']);
   const error = useAppSelector(state => state.orders.error);
   const orderFilter = useAppSelector(state => state.orders.orderFilter);
 
@@ -33,7 +34,8 @@ const OrderList = () => {
       contentContainerStyle={styles.list}
       ItemSeparatorComponent={() => <View style={styles.separator} />}
       renderItem={({ item }) => (
-        <OrderItem
+        <DeleteOrderItem
+          id={item._id}
           title={item.title}
           expDate={item.expiration_date}
           image={item.image}
