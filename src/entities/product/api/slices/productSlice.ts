@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ProductSchema } from '../../model/types/ProductSchema';
 import { fetchProducts } from '../services/fetchProducts';
-import { fetchCreateProduct } from '@src/features/createProduct';
+import { fetchCreateProduct } from '@src/features/product/createProduct';
 import { Product } from '../../model/types/Product';
 
 const initialState: ProductSchema = {

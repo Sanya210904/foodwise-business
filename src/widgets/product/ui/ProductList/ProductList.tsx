@@ -7,7 +7,7 @@ import { useAppDispatch } from '@src/shared/hooks/useAppDispatch';
 import { styles } from './styles';
 import { useAppNavigation } from '@src/shared/hooks/useAppNavigation';
 import { fetchProducts } from '@src/entities/product/api/services/fetchProducts';
-import { fetchDeleteProduct } from '@src/features/deleteProduct';
+import { fetchDeleteProduct } from '@src/features/product/deleteProduct';
 import { RouteName } from '@src/app/providers/router/model/constants/RouteName';
 
 const ProductList = () => {

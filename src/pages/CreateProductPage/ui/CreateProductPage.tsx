@@ -5,7 +5,7 @@ import {
   ScrollView,
   KeyboardAvoidingView,
 } from 'react-native';
-import { ProductCreateForm } from '@src/features/createProduct';
+import { ProductCreateForm } from '@src/features/product/createProduct';
 import { styles } from './styles';
 
 const CreateProductPage = () => {

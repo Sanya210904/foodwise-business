@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { EditShopForm } from '@src/features/editShop';
+import { EditShopForm } from '@src/features/shop/editShop';
 import { styles } from './styles';
 
 const EditShopPage = () => {

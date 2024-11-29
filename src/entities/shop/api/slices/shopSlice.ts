@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { ShopSchema } from '../../model/types/ShopSchema';
 import { Shop } from '../../model/types/Shop';
 import { fetchShop } from '../services/fetchShop';
-import { fetchEditShop } from '@src/features/editShop/api/services/fetchEditShop';
+import { fetchEditShop } from '@src/features/shop/editShop/api/services/fetchEditShop';
 
 const initialState: ShopSchema = {
   shop: {} as Shop,
