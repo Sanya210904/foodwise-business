@@ -4,9 +4,10 @@ import { useAppSelector } from '@src/shared/hooks/useAppSelector';
 import { useAppDispatch } from '@src/shared/hooks/useAppDispatch';
 import { fetchAuthStatus } from '@src/features/auth/api/services/fetchAuthStatus';
 import { ActivityIndicator, View } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { styles } from './styles';
 
-const App = () => { 
+const App = () => {
   const dispatch = useAppDispatch();
   const isAppLoading = useAppSelector(state => state.auth.isAppLoading);
 
@@ -22,7 +23,11 @@ const App = () => {
     );
   }
 
-  return <RouteStack />;
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <RouteStack />
+    </GestureHandlerRootView>
+  );
 };
 
 export default App;
