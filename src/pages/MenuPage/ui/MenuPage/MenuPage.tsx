@@ -1,4 +1,3 @@
-import React from 'react';
 import { View, SafeAreaView } from 'react-native';
 import Input from '@src/shared/ui/Input/Input';
 import ProductList from '@src/widgets/product/ui/ProductList/ProductList';

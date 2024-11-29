@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import { orderTabs } from '../../model/constants/orderTabs';
 import Tabs from '@src/shared/ui/Tabs/Tabs';

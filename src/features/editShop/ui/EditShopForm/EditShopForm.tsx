@@ -1,4 +1,3 @@
-import React from 'react';
 import { useAppSelector } from '@src/shared/hooks/useAppSelector';
 import ImagePicker from '@src/shared/ui/ImagePicker/ImagePicker';
 import Input from '@src/shared/ui/Input/Input';

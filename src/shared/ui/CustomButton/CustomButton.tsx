@@ -7,9 +7,8 @@ import {
   DimensionValue,
   ActivityIndicator,
   TextStyle,
-  Image,
 } from 'react-native';
-import React, { FC, useMemo } from 'react';
+import { FC, useMemo } from 'react';
 import { styles } from './styles';
 import LinearGradient from 'react-native-linear-gradient';
 import { colors } from '../../../app/styles/colors';
@@ -61,14 +60,14 @@ const CustomButton: FC<CustomButtonProps> = props => {
     if (type === ButtonType.WHITE) return styles.white;
     if (type === ButtonType.CLEAR) return styles.clear;
     if (type === ButtonType.LINK) return styles.link;
-  }, [type, isDisabled]);
+  }, [type, isDisabled, isLoading]);
 
   const getButtonTextStyles = useMemo(() => {
     if (type === ButtonType.GREY || type === ButtonType.WHITE)
       return styles.greyButtonText;
     if (type === ButtonType.LINK) return styles.linkButtonText;
     else return styles.text;
-  }, []);
+  }, [type]);
 
   const buttonContent = isLoading ? (
     <ActivityIndicator color={'#fff'} />

@@ -1,8 +1,6 @@
-import React from 'react';
 import {
   View,
   SafeAreaView,
-  Image,
   KeyboardAvoidingView,
   ScrollView,
 } from 'react-native';

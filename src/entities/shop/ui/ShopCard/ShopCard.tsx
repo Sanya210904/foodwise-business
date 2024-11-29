@@ -2,7 +2,6 @@ import Card from '@src/shared/ui/Card/Card';
 import CustomButton, {
   ButtonType,
 } from '@src/shared/ui/CustomButton/CustomButton';
-import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { styles } from './styles';
 import { useAppSelector } from '@src/shared/hooks/useAppSelector';

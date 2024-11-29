@@ -44,7 +44,7 @@ const productSlice = createSlice({
     builder.addCase(fetchCreateProduct.pending, state => {
       state.isLoading = true;
     });
-    builder.addCase(fetchCreateProduct.fulfilled, (state, action) => {
+    builder.addCase(fetchCreateProduct.fulfilled, state => {
       state.isLoading = false;
     });
     builder.addCase(fetchCreateProduct.rejected, (state, action) => {

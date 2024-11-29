@@ -42,25 +42,25 @@ const orderSlice = createSlice({
   },
   extraReducers: builder => {
     builder.addCase(fetchOrders.pending, state => {
-      state.isLoading['list'] = true;
+      state.isLoading.list = true;
     });
     builder.addCase(fetchOrders.fulfilled, (state, action) => {
       state.orders = action.payload.data;
-      state.isLoading['list'] = false;
+      state.isLoading.list = false;
     });
     builder.addCase(fetchOrders.rejected, (state, action) => {
-      state.isLoading['list'] = false;
+      state.isLoading.list = false;
       state.error = action.payload?.error.message || null;
     });
 
     builder.addCase(fetchDeleteOrder.pending, state => {
-      state.isLoading['delete'] = true;
+      state.isLoading.delete = true;
     });
     builder.addCase(fetchDeleteOrder.fulfilled, state => {
-      state.isLoading['delete'] = false;
+      state.isLoading.delete = false;
     });
     builder.addCase(fetchDeleteOrder.rejected, (state, action) => {
-      state.isLoading['delete'] = false;
+      state.isLoading.delete = false;
       state.error = action.payload?.error.message || null;
     });
   },

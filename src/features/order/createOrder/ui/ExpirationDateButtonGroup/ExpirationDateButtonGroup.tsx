@@ -1,8 +1,10 @@
-import React, { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { View } from 'react-native';
 import ExpirationDateButton from '../ExpirationDateButton/ExpirationDateButton';
-import { expDateButtons } from '../../model/constants/expDateButtons';
-import { ExpDateValue } from '../../model/constants/expDateButtons';
+import {
+  expDateButtons,
+  ExpDateValue,
+} from '../../model/constants/expDateButtons';
 import { styles } from './styles';
 
 type ExpirationDateButtonGroupProps = {
@@ -29,6 +31,7 @@ const ExpirationDateButtonGroup: FC<ExpirationDateButtonGroupProps> = props => {
     <View style={styles.block}>
       {expDateButtons.map(button => (
         <ExpirationDateButton
+          key={button.value}
           style={styles.button}
           title={button.label}
           value={button.value}

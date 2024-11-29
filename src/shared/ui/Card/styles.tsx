@@ -5,7 +5,6 @@ export const styles = StyleSheet.create({
   card: {
     borderRadius: 14,
     backgroundColor: colors.cardPrimary,
-
   },
   container: {
     width: '100%',

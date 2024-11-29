@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { styles } from './styles';
 import { API_MAIN_IMAGE_URL } from '@env';
@@ -25,7 +25,7 @@ type ProductItemProps = {
 
 const ProductItem: FC<ProductItemProps> = props => {
   const { id, imageId, title, price, onRemove, onCardPress } = props;
-  const [isEdit, setEdit] = useAtom(isEditAtom);
+  const [isEdit, _] = useAtom(isEditAtom);
   return (
     <View style={[styles.block]}>
       <TouchableOpacity

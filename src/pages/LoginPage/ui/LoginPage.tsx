@@ -26,6 +26,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     headerPosition.value = 0;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const headerAnimatedStyle = useAnimatedStyle(() => {

@@ -55,7 +55,7 @@ const authSlice = createSlice({
       EncryptedStorage.setItem('token', action.payload.data.accessToken);
       state.shopId = action.payload.data.shop._id;
     });
-    builder.addCase(fetchAuthStatus.rejected, (state, action) => {
+    builder.addCase(fetchAuthStatus.rejected, state => {
       state.isAppLoading = false;
       state.isAuth = false;
     });

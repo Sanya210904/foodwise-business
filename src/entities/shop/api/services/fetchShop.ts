@@ -10,9 +10,8 @@ export const fetchShop = createAsyncThunk<
   { rejectValue: ServerError }
 >('shop/getSelf', async (_, { rejectWithValue }) => {
   try {
-    const response: AxiosResponse<FetchShopResponse> = await baseApi.get(
-      'shops/self',
-    );
+    const response: AxiosResponse<FetchShopResponse> =
+      await baseApi.get('shops/self');
 
     return response.data;
   } catch (error: any) {

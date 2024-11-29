@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { OrderItem } from '@src/entities/order';
 import Animated, {
   useAnimatedStyle,
@@ -9,6 +9,7 @@ import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import DeleteOrderButton from '../DeleteOrderButton/DeleteOrderButton';
 import { useAppDispatch } from '@src/shared/hooks/useAppDispatch';
 import { fetchDeleteOrder } from '../../api/services/fetchDeleteOrder';
+import { styles } from './styles';
 
 type DeleteOrderItemProps = {
   id: string;
@@ -58,7 +59,7 @@ const DeleteOrderItem: FC<DeleteOrderItemProps> = props => {
     <>
       <DeleteOrderButton onDelete={handleDeleteOrder} />
       <GestureDetector gesture={panGesture}>
-        <Animated.View style={[animatedOrderItemStyle, { flex: 1 }]}>
+        <Animated.View style={[animatedOrderItemStyle, styles.wrapper]}>
           <OrderItem {...props} />
         </Animated.View>
       </GestureDetector>

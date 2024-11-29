@@ -14,7 +14,6 @@ export type Shop = {
   stats: ShopStats;
 };
 
-
 type ShopStats = {
   overall: {
     $numberDecimal: string;
@@ -22,12 +21,6 @@ type ShopStats = {
   last_month: {
     $numberDecimal: string;
   };
-};
-
-type ShopDiscount = {
-  hour: string;
-  default_num: number;
-  automated: boolean;
 };
 
 type ShopLocation = {

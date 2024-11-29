@@ -3,6 +3,9 @@ import { fonts } from '@src/app/styles/fonts';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+  },
   modal: {
     position: 'absolute',
     alignItems: 'center',

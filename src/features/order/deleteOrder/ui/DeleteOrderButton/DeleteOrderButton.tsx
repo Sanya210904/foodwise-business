@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { View } from 'react-native';
 import CustomButton, {
   ButtonType,
@@ -13,7 +13,7 @@ type DeleteOrderButtonProps = {
 
 const DeleteOrderButton: FC<DeleteOrderButtonProps> = props => {
   const { onDelete } = props;
-  const isLoading = useAppSelector(state => state.orders.isLoading['delete']);
+  const isLoading = useAppSelector(state => state.orders.isLoading.delete);
 
   return (
     <View style={styles.block}>

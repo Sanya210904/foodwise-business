@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { styles } from './styles';
 import { useAppSelector } from '@src/shared/hooks/useAppSelector';
 import { useAppDispatch } from '@src/shared/hooks/useAppDispatch';
@@ -10,12 +10,12 @@ import DeleteOrderItem from '@src/features/order/deleteOrder/ui/DeleteOrderItem/
 const OrderList = () => {
   const dispatch = useAppDispatch();
   const orders = useAppSelector(state => state.orders.orders);
-  const isLoading = useAppSelector(state => state.orders.isLoading['list']);
-  const error = useAppSelector(state => state.orders.error);
+  const isLoading = useAppSelector(state => state.orders.isLoading.list);
   const orderFilter = useAppSelector(state => state.orders.orderFilter);
 
   useEffect(() => {
     dispatch(fetchOrders(orderFilter));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orderFilter]);
 
   if (isLoading) {

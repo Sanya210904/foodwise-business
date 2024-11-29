@@ -1,5 +1,5 @@
 import { API_MAIN_IMAGE_URL } from '@env';
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { View, Text, Image, StyleProp, ViewStyle } from 'react-native';
 import { styles } from './styles';
 

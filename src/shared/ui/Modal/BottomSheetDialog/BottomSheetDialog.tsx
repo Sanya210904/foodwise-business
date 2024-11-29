@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { View, Text } from 'react-native';
 import Modal from 'react-native-modal';
 import CustomButton, { ButtonType } from '../../CustomButton/CustomButton';
@@ -30,7 +30,7 @@ const BottomSheetDialog: FC<BottomSheetDialogProps> = props => {
       useNativeDriver
       hideModalContentWhileAnimating
       backdropTransitionOutTiming={0}
-      style={{ flex: 1 }}
+      style={styles.wrapper}
       statusBarTranslucent
       onBackdropPress={onClose}
       isVisible={isOpen}>

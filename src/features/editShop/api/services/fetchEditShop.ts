@@ -9,7 +9,7 @@ export const fetchEditShop = createAsyncThunk<
   EditShopResponse,
   EditShopFields,
   { rejectValue: ServerError }
->('shop/changeShop', async (shop, { rejectWithValue, dispatch }) => {
+>('shop/changeShop', async (shop, { rejectWithValue }) => {
   try {
     const formData = new FormData();
 

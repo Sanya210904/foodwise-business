@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import Input, { InputType } from '@src/shared/ui/Input/Input';
 import BottomControls from '@src/shared/ui/BottomControls/BottomControls';

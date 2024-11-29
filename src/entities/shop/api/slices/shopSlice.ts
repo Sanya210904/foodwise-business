@@ -1,8 +1,7 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { ShopSchema } from '../../model/types/ShopSchema';
 import { Shop } from '../../model/types/Shop';
 import { fetchShop } from '../services/fetchShop';
-import { EditShopFields } from '@src/features/editShop/model/types/EditShopFields';
 import { fetchEditShop } from '@src/features/editShop/api/services/fetchEditShop';
 
 const initialState: ShopSchema = {
@@ -20,7 +19,7 @@ const shopSlice = createSlice({
     },
   },
   extraReducers: builder => {
-    builder.addCase(fetchShop.pending, (state, action) => {
+    builder.addCase(fetchShop.pending, state => {
       state.isLoading = true;
       state.error = null;
     });
@@ -33,7 +32,7 @@ const shopSlice = createSlice({
       state.error = action.payload?.error.message || null;
     });
 
-    builder.addCase(fetchEditShop.pending, (state, action) => {
+    builder.addCase(fetchEditShop.pending, state => {
       state.isLoading = true;
       state.error = null;
     });

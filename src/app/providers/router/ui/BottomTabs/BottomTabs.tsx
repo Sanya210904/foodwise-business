@@ -1,4 +1,3 @@
-import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { bottomTabsRoutes } from '../../model/constants/routeList';
 import { styles } from './styles';
@@ -23,16 +22,16 @@ const BottomTabs = () => {
           const iconWidth = 40;
           const iconHeight = 40;
 
-          const currentRoute = bottomTabsRoutes.find(
-            currentRoute => currentRoute.name === route.name,
+          const foundRoute = bottomTabsRoutes.find(
+            currentRoute => route.name === currentRoute.name,
           );
-          if (!currentRoute) {
+          if (!foundRoute) {
             console.log('Cannot find route');
             const RouteIcon = bottomTabsRoutes[0].icon;
             return <RouteIcon width={iconWidth} height={iconHeight} />;
           }
 
-          const RouteIcon = currentRoute.icon;
+          const RouteIcon = foundRoute.icon;
           return <RouteIcon width={iconWidth} height={iconHeight} />;
         },
       })}>

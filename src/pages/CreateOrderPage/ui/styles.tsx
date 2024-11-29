@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   scrollContainer: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   container: {
     paddingTop: offsets.containerOffsetTop,

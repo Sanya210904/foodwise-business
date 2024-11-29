@@ -27,7 +27,7 @@ const orderCreateSlice = createSlice({
     builder.addCase(fetchCreateOrder.pending, state => {
       state.isLoading = true;
     });
-    builder.addCase(fetchCreateOrder.fulfilled, (state, action) => {
+    builder.addCase(fetchCreateOrder.fulfilled, state => {
       state.isLoading = false;
     });
     builder.addCase(fetchCreateOrder.rejected, (state, action) => {

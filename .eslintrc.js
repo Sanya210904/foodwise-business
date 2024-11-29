@@ -22,5 +22,7 @@ module.exports = {
         endOfLine: 'auto',
       },
     ],
+    '@typescript-eslint/no-shadow': 'off',
+    'no-useless-escape': 'off',
   },
 };

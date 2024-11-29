@@ -1,4 +1,3 @@
-import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { privateRoutes, publicRoutes } from '../../model/constants/routeList';
 import { colors } from '@src/app/styles/colors';

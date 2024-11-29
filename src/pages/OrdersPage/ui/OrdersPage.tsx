@@ -1,4 +1,3 @@
-import React from 'react';
 import { View, Text, SafeAreaView } from 'react-native';
 import { styles } from './styles';
 import { OrderList, OrderTabs } from '@src/widgets/order';

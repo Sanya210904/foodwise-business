@@ -1,4 +1,3 @@
-import { colors } from '@src/app/styles/colors';
 import { fonts } from '@src/app/styles/fonts';
 import { StyleSheet } from 'react-native';
 

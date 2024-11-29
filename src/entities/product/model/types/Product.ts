@@ -9,5 +9,3 @@ export type Product = {
   category_id: string;
   user_id: string;
 };
-
-

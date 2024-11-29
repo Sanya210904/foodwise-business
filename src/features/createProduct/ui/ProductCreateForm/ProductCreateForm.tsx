@@ -1,5 +1,5 @@
-import { View, StyleProp, ViewStyle, Text, ScrollView } from 'react-native';
-import React, { FC, useState } from 'react';
+import { View, StyleProp, ViewStyle, Text } from 'react-native';
+import { FC } from 'react';
 import { useAppDispatch } from '@src/shared/hooks/useAppDispatch';
 import { Controller, useForm } from 'react-hook-form';
 import Input from '@src/shared/ui/Input/Input';

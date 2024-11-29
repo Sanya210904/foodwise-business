@@ -1,20 +1,14 @@
-import React, { useEffect } from 'react';
-import { Dimensions, View } from 'react-native';
+import { useEffect } from 'react';
+import { View } from 'react-native';
 import { ProductItem } from '@src/entities/product';
 import { FlashList } from '@shopify/flash-list';
 import { useAppSelector } from '@src/shared/hooks/useAppSelector';
 import { useAppDispatch } from '@src/shared/hooks/useAppDispatch';
 import { styles } from './styles';
-import { offsets } from '@src/app/styles/offsets';
 import { useAppNavigation } from '@src/shared/hooks/useAppNavigation';
 import { fetchProducts } from '@src/entities/product/api/services/fetchProducts';
 import { fetchDeleteProduct } from '@src/features/deleteProduct';
 import { RouteName } from '@src/app/providers/router/model/constants/RouteName';
-
-const screenWidth = Dimensions.get('screen').width;
-const cardColumnGap = 14;
-const cardWidth =
-  (screenWidth - offsets.containerOffsetHorizontal * 2 - cardColumnGap) / 2;
 
 const ProductList = () => {
   const navigation = useAppNavigation();
@@ -24,6 +18,7 @@ const ProductList = () => {
 
   useEffect(() => {
     dispatch(fetchProducts());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleCardPress = (
@@ -44,7 +39,7 @@ const ProductList = () => {
       <FlashList
         style={styles.list}
         contentContainerStyle={styles.contentContainer}
-        ItemSeparatorComponent={() => <View style={{ height: 14 }} />}
+        ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
         numColumns={2}
         data={products}
         estimatedItemSize={192}

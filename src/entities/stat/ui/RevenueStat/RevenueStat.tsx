@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { View, Text, StyleProp, ViewStyle } from 'react-native';
 import Card from '@src/shared/ui/Card/Card';
 import { useAppSelector } from '@src/shared/hooks/useAppSelector';

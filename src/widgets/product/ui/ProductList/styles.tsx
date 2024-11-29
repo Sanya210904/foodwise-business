@@ -9,5 +9,8 @@ export const styles = StyleSheet.create({
     paddingTop: 16,
     paddingHorizontal: offsets.containerOffsetHorizontal - 7,
   },
+  itemSeparator: {
+    height: 14,
+  },
   list: {},
 });

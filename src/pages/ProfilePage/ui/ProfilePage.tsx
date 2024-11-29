@@ -1,7 +1,7 @@
 import CustomButton, {
   ButtonType,
 } from '@src/shared/ui/CustomButton/CustomButton';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { View, Text, SafeAreaView, ActivityIndicator } from 'react-native';
 import { RevenueStat } from '@src/entities/stat';
 import { ShopCard } from '@src/entities/shop';
@@ -19,6 +19,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     dispatch(fetchShop());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleLogout = () => {
