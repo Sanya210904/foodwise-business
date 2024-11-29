@@ -1,5 +1,5 @@
 import MaskedView from '@react-native-masked-view/masked-view';
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import { Text, StyleProp, TextStyle } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { styles } from './styles';
@@ -7,6 +7,7 @@ import { styles } from './styles';
 type GradientTextProps = {
   style?: StyleProp<TextStyle>;
   colors: (string | number)[];
+  children: ReactNode;
 };
 
 const GradientText: FC<GradientTextProps> = props => {

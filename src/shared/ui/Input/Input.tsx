@@ -26,6 +26,7 @@ type InputProps = {
   placeholder?: string;
   width?: DimensionValue;
   height?: DimensionValue;
+  multiline?: boolean;
   errorText?: string | null;
   style?: StyleProp<TextStyle>;
 };
@@ -41,6 +42,7 @@ const Input: FC<InputProps> = props => {
     onBlur,
     type,
     secureTextEntry = false,
+    multiline = false,
     errorText,
     style,
     ...otherProps
@@ -64,6 +66,7 @@ const Input: FC<InputProps> = props => {
         onBlur={onBlur}
         value={value?.toString()}
         secureTextEntry={secureTextEntry}
+        multiline={multiline}
         style={[
           styles.input,
           errorText ? styles.errorInput : null,
