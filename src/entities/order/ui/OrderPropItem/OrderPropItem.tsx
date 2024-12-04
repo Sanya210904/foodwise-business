@@ -5,7 +5,7 @@ import { styles } from './styles';
 import { API_MAIN_IMAGE_URL } from '@env';
 import { getLocaleDateStringFromIso } from '../../model/lib/getLocaleDateStringFromIso';
 
-type OrderItemProps = {
+type OrderPropItemProps = {
   title: string;
   image: string;
   quantity: number;
@@ -13,7 +13,7 @@ type OrderItemProps = {
   expDate: string;
 };
 
-const OrderItem: FC<OrderItemProps> = props => {
+const OrderPropItem: FC<OrderPropItemProps> = props => {
   const { title, image, quantity, discount, expDate } = props;
 
   return (
@@ -45,4 +45,4 @@ const OrderItem: FC<OrderItemProps> = props => {
   );
 };
 
-export default OrderItem;
+export default OrderPropItem;

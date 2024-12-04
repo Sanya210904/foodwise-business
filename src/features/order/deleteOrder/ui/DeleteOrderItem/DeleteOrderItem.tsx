@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { OrderItem } from '@src/entities/order';
+import { OrderPropItem } from '@src/entities/order';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -60,7 +60,7 @@ const DeleteOrderItem: FC<DeleteOrderItemProps> = props => {
       <DeleteOrderButton onDelete={handleDeleteOrder} />
       <GestureDetector gesture={panGesture}>
         <Animated.View style={[animatedOrderItemStyle, styles.wrapper]}>
-          <OrderItem {...props} />
+          <OrderPropItem {...props} />
         </Animated.View>
       </GestureDetector>
     </>

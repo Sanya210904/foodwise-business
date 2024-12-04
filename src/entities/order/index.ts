@@ -1,4 +1,4 @@
-import OrderItem from './ui/OrderItem/OrderItem';
+import OrderPropItem from './ui/OrderPropItem/OrderPropItem';
 
 import orderSlice, {
   setOrderFilter,
@@ -9,7 +9,7 @@ import { fetchOrders } from './api/services/fetchOrders';
 
 import { ORDER_CATEGORIES } from './model/constants/OrderCategories';
 
-export { OrderItem };
+export { OrderPropItem };
 
 export { orderSlice };
 export { setOrderFilter, addOrder, deleteOrder };
