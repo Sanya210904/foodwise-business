@@ -4,13 +4,13 @@ import { ServerError } from '@src/shared/types/ServerError';
 import { FetchOrdersResponse } from '../../model/types/FetchOrder';
 import { ORDER_CATEGORIES } from '../../model/constants/OrderCategories';
 
-export const fetchOrders = createAsyncThunk<
+export const fetchOrderProps = createAsyncThunk<
   FetchOrdersResponse,
-  ORDER_CATEGORIES,
+  undefined,
   { rejectValue: ServerError }
->('orders/fetch', async (category, { rejectWithValue }) => {
+>('orders/props', async (_, { rejectWithValue }) => {
   try {
-    const response = await baseApi.get(`orders/orders?category=${category}`);
+    const response = await baseApi.get(`orders/props`);
 
     if (response.status !== 200) {
       throw new Error('Error while fetching orders');

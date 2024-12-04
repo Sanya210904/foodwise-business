@@ -4,6 +4,7 @@ import { ORDER_CATEGORIES } from '../../model/constants/OrderCategories';
 import { fetchOrders } from '../services/fetchOrders';
 import { fetchDeleteOrder } from '@src/features/order/deleteOrder/api/services/fetchDeleteOrder';
 import { Order } from '../../model/types/Order';
+import { fetchOrderProps } from '../services/fetchOrderProps';
 
 const initialState: OrderSchema = {
   orders: [],
@@ -49,6 +50,18 @@ const orderSlice = createSlice({
       state.isLoading.list = false;
     });
     builder.addCase(fetchOrders.rejected, (state, action) => {
+      state.isLoading.list = false;
+      state.error = action.payload?.error.message || null;
+    });
+
+    builder.addCase(fetchOrderProps.pending, state => {
+      state.isLoading.list = true;
+    });
+    builder.addCase(fetchOrderProps.fulfilled, (state, action) => {
+      state.orders = action.payload.data;
+      state.isLoading.list = false;
+    });
+    builder.addCase(fetchOrderProps.rejected, (state, action) => {
       state.isLoading.list = false;
       state.error = action.payload?.error.message || null;
     });
