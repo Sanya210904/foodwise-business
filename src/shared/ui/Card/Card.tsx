@@ -13,6 +13,7 @@ type CardProps = {
   children: ReactNode;
   width: DimensionValue;
   height?: DimensionValue;
+  padding?: DimensionValue;
   isPressable?: boolean;
   onPress?: () => void;
   cardStyles?: StyleProp<ViewStyle>;
@@ -30,6 +31,7 @@ const Card: FC<CardProps> = props => {
     children,
     width,
     height,
+    padding,
     isPressable = false,
     onPress,
     cardStyles,
@@ -40,13 +42,13 @@ const Card: FC<CardProps> = props => {
       <Shadow
         style={{
           width,
-          // height,
+          height,
         }}
         {...cardShadow}>
-        <TouchableOpacity
-          style={[{ width, height }, styles.card, cardStyles]}
-          onPress={onPress}>
-          <View style={styles.container}>{children}</View>
+        <TouchableOpacity activeOpacity={0.85} onPress={onPress}>
+          <View style={[{ width, height, padding }, styles.card, cardStyles]}>
+            <View>{children}</View>
+          </View>
         </TouchableOpacity>
       </Shadow>
     );
@@ -59,7 +61,7 @@ const Card: FC<CardProps> = props => {
         height,
       }}
       {...cardShadow}>
-      <View style={[{ width, height }, styles.card, cardStyles]}>
+      <View style={[{ width, height, padding }, styles.card, cardStyles]}>
         {children}
       </View>
     </Shadow>
